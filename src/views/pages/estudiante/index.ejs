@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="../../.././stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('../../partials/header.ejs'); %>
+    <main class="centro">
+      <div class="tituloDelRegistro">
+      <h1>registrate aqui</h1>
+      </div>
+      <div class="formulario">
+        <form action="/estudiante/index" method="post" class="formu">
+          <div class="username">
+            <input class="inpust" type="text" name="name" required />
+            <label class="labe">Nombre</label>
+          </div>
+          <div class="username">
+            <input class="inpust" type="text" name="lastname" required />
+            <label class="labe">Apellido</label>
+          </div>
+          <div class="username">
+            <input class="inpust" type="email" name="email" required />
+            <label class="labe">Correo</label>
+          </div>
+          <div class="username">
+            <input class="inpust" type="number" name="cedula" required />
+            <label class="labe">Cedula</label>
+          </div>
+          <div class="username">
+            <input class="inpust" type="password" name="password" required />
+            <label class="labe"> Contraseña</label>
+          </div>
+          <input type="number" name="age" placeholder="ingrese su edad">
+          <div class="formuAbajo">
+          <p class="pa">Estoy de acuerdo con <a href="/TerminosCondiciones" class="a">Termino y Condiciones</a></p>
+          <button class="botones" type="submit"> enviar</button>
+          <p class="pa"><a href="/inicio" class="a">¿ya tienes una cuenta ?</a></p>
+          </div>
+    </form>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text: '<%= alertMessage %>',
+          icon: '<%= alertIcon %>',
+          showConfirmButtom: '<%= showConfirmButtom %>',
+          timer: '<%= timer %>'
+        }).then(() => {
+          window.location = '/<%= ruta %>'
+        })
+      </script>
+      <% } %>
+
+    <%- include('../../partials/footer.ejs'); %>
+  </body>
+</html>
+
+<!--
+
+-->

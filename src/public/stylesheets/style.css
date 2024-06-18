@@ -1,0 +1,475 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+h3 {
+  margin: 0;
+}
+
+/* ESTILOS DEL HEADER*/
+
+.encabezado {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(7, 19, 126, 0.87);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  box-shadow: 0px 1px 1px 1px;
+}
+
+.tituloHeader{
+  color: white;
+}
+
+.encabezados {
+  width: 500px;
+  height: 50px;
+}
+
+.contenedor{
+  height: 400px;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  perspective: 500px;
+
+}
+
+.logo {
+width: 40px;
+height: 40px;
+  background: url(../image/flux-svgrepo-com.svg);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  margin-right: 300px;
+  filter: drop-shadow( 0px 7px 7px blue);
+  animation: rotar 5s linear infinite;
+}
+
+
+@keyframes rotar{
+  from{
+    transform: rotateY(180deg)
+
+  }
+  to{
+    transform: rotateY(-180deg);
+  }
+}
+
+.imagen {
+  width: 100px;
+  height: 48px;
+}
+
+
+
+.Centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.boton__centro {
+  height: 50px;
+  width: 100px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  transition: 0.5s ease;
+  color: white;
+}
+
+.boton__centro:hover {
+  color: white;
+  background-color: rgb(11, 60, 167);
+  transition: 0.5s ease;
+}
+
+
+/*ESTILOS DEL MAIN(CENTRO)*/
+
+
+  .lista {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  list-style: none;
+  padding-right: 10px;
+  align-items: center;
+}
+
+.opcion {
+  text-align: center;
+  height: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.opcion:hover {
+  background-color: rgb(24, 14, 168);
+  color: white;
+  transition: 0.5s ease;
+}
+
+.centro {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  gap: 15px;
+  background-color: rgb(2, 15, 32);
+}
+
+.bienvenido {
+  margin-top: 20px;
+  width: 400px;
+  height: 100px;
+  background-color: rgb(52, 73, 94);
+  border-radius: 10px;
+  color: rgb(238, 238, 238);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  box-shadow: 16px 14px 20px #0000008c;
+}
+
+.InicioDeElsistema{
+  width: 600px;
+  margin-bottom: 20px;
+} 
+
+
+.tituloDelRegistro{
+  width: 400px;
+  height: 100px;
+  background-color: rgb(52, 73, 94);
+  text-align: center;
+  box-shadow: 16px 14px 20px #0000008c;
+  border-radius: 10px;
+  color: white;
+  margin-top: 25px;
+}
+
+.a {
+  color: rgb(6, 6, 58);
+}
+
+.formuAbajo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+
+.botones {
+  width: 200px;
+  height: 50px;
+  color: white;
+  background-color: rgb(8, 8, 197);
+  cursor: pointer;
+  transition: 0.5s ease;
+  border: none;
+  border-radius: 10px;
+}
+
+.botones:hover {
+  background-color: rgb(8, 8, 139);
+}
+
+.pa {
+  margin: 5px;
+}
+
+.formulario{
+  background-color: rgb(52, 73, 94);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 500px;
+  height: 600px;
+  border-radius: 10px;
+  color: rgb(245, 245, 245);
+  box-shadow: 16px 14px 20px #0000008c;
+}
+
+.formulario h1{
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid silver;
+}
+
+
+.formu .username{
+  position: relative;
+  border-bottom: 2px solid rgb(5, 7, 143);
+  margin: 30px 0;
+}
+
+
+.username .inpust{
+
+  width: 97%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background-color: #0e0d0d;
+  outline: none;
+  color: white;
+}
+
+.username .labe{
+
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-70%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+
+
+
+
+.username .inpust:focus ~.labe{
+  top: -5px;
+  color:  rgb(255, 255, 255);
+  transition: .5s;
+}
+
+.selecte{
+  width: 100%;
+  height: 40px;
+  background-color: #0e0d0d;
+  color:  #adadad;
+  border: none;
+  border-bottom: 2px solid rgb(5, 7, 143);
+}
+
+
+
+/*ESTILOS DEL FOOTER*/
+
+.parteDeAbajo {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: rgb(99, 97, 97);
+  color: white;
+  gap: 70px;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagenFooter{
+  width: 70px;
+  height: 70px;
+}
+
+
+p {
+  margin: 0px;
+}
+
+/*ESTILOS DE TERMINOS Y SERVICIOS */
+
+.centro__terminos{
+  width: 100%;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  gap: 15px;
+  background-color: rgb(2, 15, 32);
+}
+.titulo{
+  margin-top: 20px;
+  width: 400px;
+  height: 100px;
+  background-color: rgb(52, 73, 94);
+  border-radius: 10px;
+  color: rgb(238, 238, 238);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  box-shadow: 16px 14px 20px #0000008c;
+}
+
+.TerminosYServicios{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height:auto;
+  background-color: rgb(52, 73, 94);
+  font-size: 12px;
+  border-radius: 10px;
+  color: rgb(238, 238, 238);
+  padding: 4px;
+  box-shadow: 16px 14px 20px #0000008c;
+}
+
+/* inicio de sesion */
+
+.centro--inicioDeSesion{
+  height: 600px;
+}
+.ForminicioDeSesion{
+  height: 300px;
+}
+
+
+/*cartas */
+
+.contenedor{
+  height: 100vh;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+.card{
+  height: 350px;
+  width: 300px;
+  margin: 10px;
+  transition: 300ms;
+}
+
+.personaje , .personaje_2{
+  height: 350px;
+  width: 300px;
+  border-radius: 10%;
+  transition: 300ms;
+  position: absolute;
+}
+
+.img-personaje{
+  height: 350px;
+  background-image: url('.././image/6205248.jpg');
+  background-size: contain;
+  margin-bottom: 200px;
+  border-radius: 20px;
+  transition: 300ms;
+  filter: drop-shadow(5px -4px 10px #000);
+}
+
+.img-personaje_2{
+  height: 350px;
+  background-image: url('.././image/6205248.jpg');
+  background-size: contain;
+  margin-bottom: 200px;
+  border-radius: 20px;
+  transition: 300ms;
+  filter: drop-shadow(5px -4px 10px #000);
+
+}
+
+.detalles,.detalles_2{
+  height: 200px;
+  width: 300px;
+  background-color: #212F3D;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius:5px;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+
+}
+
+.card:hover .img-personaje{
+  transform: translateY(-40px);
+  transition: 300ms;
+  filter: none;
+  background-size: contain;
+}
+
+.card:hover .img-personaje_2{
+  transform: translateY(-40px);
+  transition: 300ms;
+  filter: none;
+  background-size: contain;
+}
+h2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pDeCartas{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.buton{
+  height: 200px;
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: #1C2833 ;
+border-bottom-left-radius:20px ;
+border-bottom-right-radius:20px ;
+gap: 10px;
+border-left: .5px solid blue;
+border-right:.5px solid blue;
+}
+
+.boton{
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: .5s ease;
+  margin-bottom: 10px;
+}
+
+.boton:hover{
+  background: #3908c0 ;
+  transition: .5s ease;
+}
+
+.inicioDeTodo{
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.detalleDocente{
+  height: 300px;
+}
