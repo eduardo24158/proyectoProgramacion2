@@ -29,3 +29,30 @@ create table inscripciones(
     fecha_inscripcion date not null,
     primary key(id)
 );
+
+create table asig_inscritos(
+	id int auto_increment not null,
+    proceso_id int not null,
+    pensum_id int not null,
+    estudiante_id int not null,
+    primary key(id)
+);
+
+create table semestre(
+	id int auto_increment not null,
+    nombreSemestre varchar(50) not null,
+    primary key(id)
+);
+
+create table carrera(
+	id int auto_increment not null,
+    nombreCarrera varchar(100) not null,
+    primary key(id)
+);
+
+create table periodo(
+	id int auto_increment not null,
+    nombrePeriodo varchar(8) not null,
+    estatus varchar(20) not null,
+    primary key(id)
+);
