@@ -8,7 +8,9 @@ router.get('/',(req,res)=>{
 })
 router.get('/estudiante/registro', (req, res) => {
   if(req.session.loggedin != true){
-    res.render('pages/estudiante/index');
+    res.render('pages/estudiante/register', {
+      error: false
+    });
   }else{
     res.redirect('/estudiante/home')
   }
