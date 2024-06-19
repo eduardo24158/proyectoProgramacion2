@@ -24,7 +24,7 @@ const postRegisterStudent = async (req, res) => {
                 alertIcon: "error",
                 showConfirmButtom: false,
                 timer: 2000,
-                ruta: 'pages/estudiante/index'
+                ruta: '/estudiante/index'
             });
         }else{
             connection.query('INSERT INTO estudiantes SET ?', {name:name, lastname:lastname, age:age, email:email, cedula:cedula, password:encryp}, async(error, result) => {
@@ -38,7 +38,7 @@ const postRegisterStudent = async (req, res) => {
                         alertIcon: "success",
                         showConfirmButtom: false,
                         timer: 1500,
-                        ruta: 'estudiante/home'
+                        ruta: '/estudiante/home'
                     });
                 }
             });

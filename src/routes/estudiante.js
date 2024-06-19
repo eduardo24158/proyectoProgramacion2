@@ -4,7 +4,11 @@ const router = express.Router();
 /* GET home page. */
 
 router.get('/',(req,res)=>{
-  res.render('pages/inicio')
+  if(req.session.loggedin != true){
+    res.render('pages/inicio');
+  }else{
+    res.redirect('/estudiante/home')
+  }
 })
 router.get('/estudiante/registro', (req, res) => {
   if(req.session.loggedin != true){
@@ -23,7 +27,13 @@ router.get('/estudiante/inicio', (req, res) => {
 });
 
 router.get('/estudiante/home', (req, res) => {
-  res.render('pages/estudiante/home');
+  if(req.session.loggedin == true){
+
+res.render('pages/estudiante/home', {name : req.session.name});
+  
+}else{
+    res.redirect('/')
+  }
 });
 router.get('/estudiante/datos',(req,res)=>{
   res.render('pages/estudiante/datos');

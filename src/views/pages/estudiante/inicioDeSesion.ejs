@@ -8,6 +8,12 @@
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
+  <div class="encabezados Centro">
+    <a href="/estudiante/inicio"><button class="btn-3"> iniciar sesion</button></a>
+    <a href="/estudiante/registro"><button class="btn-3">registro</button></a> 
+    <a href="/"><button class="btn-3">inicio</button></a> 
+  </div>
+  </header>
 <main class="centro centro--inicioDeSesion">
     <div class="tituloDelRegistro">
     <h1>iniciar sesion</h1>
@@ -24,8 +30,8 @@
         </div>
         <div class="formuAbajo">
         <p class="pa">Estoy de acuerdo con <a href="/TerminosCondiciones" class="a">Termino y Condiciones</a></p>
-        <button type="submit" class="botones" >iniciar sesion</button>
-        <p class="pa"><a href="pages/estudiante/index" class="a">¿ya tienes una cuenta ?</a></p>
+        <button type="submit" class="btn_1" >iniciar sesion</button>
+        <p class="pa"><a href="/estudiante/index" class="a">¿ya tienes una cuenta ?</a></p>
         </div>
   </form>
 </main>
