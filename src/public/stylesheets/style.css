@@ -131,6 +131,10 @@ height: 40px;
   background-color: rgb(2, 15, 32);
 }
 
+.centroregistro{
+  height: 900px;
+}
+
 .bienvenido {
   margin-top: 20px;
   width: 400px;
@@ -201,7 +205,7 @@ height: 40px;
   align-items: center;
   flex-direction: row;
   width: 500px;
-  height: 600px;
+  height: 700px;
   border-radius: 10px;
   color: rgb(245, 245, 245);
   box-shadow: 16px 14px 20px #0000008c;
