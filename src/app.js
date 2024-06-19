@@ -5,7 +5,9 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const session = require('express-session');
-const estudianteRouter = require('./routes/estudiante.js');
+
+//Rutas
+const estudianteRouter = require('./routes/estudiante');
 const sessionRouter = require('./routes/session.routes');
 const registerRouter = require('./routes/register.routes');
 const homeRouter = require('./routes/home.routes');

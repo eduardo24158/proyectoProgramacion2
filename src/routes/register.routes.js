@@ -3,10 +3,10 @@ const { getRegister, postRegisterStudent ,terminosCond } = require('../controlle
 
 const router = Router();
 
-router.get('/estudiante/index', getRegister);
+router.get('/estudiante/register', getRegister);
 
-router.post('/estudiante/index', postRegisterStudent);
+router.post('/estudiante/register', postRegisterStudent);
 
-router.get('/estudiante/index/terminos_Condiciones', terminosCond);
+router.get('/estudiante/register/terminos_Condiciones', terminosCond);
 
 module.exports = router;

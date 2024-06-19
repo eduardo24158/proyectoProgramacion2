@@ -2,7 +2,9 @@ const bcrypt = require('bcrypt');
 const { connection } = require('../db');
 
 const getRegister = (req, res) => {
-    res.render('pages/estudiante/index');
+    res.render('pages/estudiante/register', {
+        error: false
+    });
 };
 
 const postRegisterStudent = async (req, res) => {
@@ -12,12 +14,23 @@ const postRegisterStudent = async (req, res) => {
     const email = req.body.email;
     const cedula = req.body.cedula;
     const password = req.body.password;
+    console.log(password);
+
+    if ((parseInt(cedula) < 1000000) || (parseInt(cedula) > 40000000)) {
+        return res.render('pages/estudiante/register', {
+            error: true,
+            mensajeError: 'La cédula no es válida.'
+        });
+    }
 
     let encryp = await bcrypt.hash(password, 8);
 
     connection.query('SELECT * FROM estudiantes WHERE email = ?', [email], async(error, result) => {
-        if (result.length > 0) {
-            res.render('pages/estudiante/index', {
+        if (error){
+            console.log(error);
+        }else if (result.length > 0) {
+            res.render('pages/estudiante/register', {
+                error: false,
                 alert: true,
                 alertTitle: 'Error!',
                 alertMessage: "Ya tiene una cuenta creada!",
@@ -31,7 +44,8 @@ const postRegisterStudent = async (req, res) => {
                 if (error) {
                     console.log(error);
                 }else{
-                    res.render('pages/estudiante/index', {
+                    res.render('pages/estudiante/register', {
+                        error: false,
                         alert: true,
                         alertTitle: 'Registro',
                         alertMessage: "Registro Exitoso :D",
