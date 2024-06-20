@@ -2,7 +2,14 @@ const bcrypt = require('bcrypt');
 const { connection }= require('../db');
 
 const getSession = (req, res) => {
-    res.render('pages/estudiante/inicioDeSesion');
+    if (req.session.loggedin == true) {
+        res.render('pages/pagesPrincipal/home', {
+          login: true,
+          name: req.session.name
+        });
+    }else{
+        res.render('pages/estudiante/inicioDeSesion');
+    }
 };
 
 const postSession = async (req, res) => {
@@ -19,10 +26,10 @@ const postSession = async (req, res) => {
                     alertIcon: "error",
                     showConfirmButtom: true,
                     timer: 20000,
-                    ruta: 'session'
+                    ruta: 'estudiante/session'
                 });
             }else{
-                req.session.name = result[0].name
+                req.session.name = result[0].name;
                 req.session.loggedin = true;
                 res.render('pages/estudiante/inicioDeSesion', {
                     alert: true,
@@ -43,11 +50,10 @@ const postSession = async (req, res) => {
             alertIcon: "warning",
             showConfirmButtom: true,
             timer: 20000,
-            ruta: 'session'
+            ruta: 'estudiante/session'
         });
     }
 }
-
 
 module.exports = {
     getSession,
