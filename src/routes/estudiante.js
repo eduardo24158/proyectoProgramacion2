@@ -38,7 +38,8 @@ res.render('pages/estudiante/home', {name : req.session.name});
   }
 });
 router.get('/estudiante/datos',(req,res)=>{
-  res.render('pages/estudiante/datos');
+  
+  res.render('pages/estudiante/datos',{name : req.session.name});
 })
 router.get('/estudiante/preEleccion',(req,res)=>{
   res.render('pages/estudiante/preEleccionMateria');
