@@ -3,7 +3,7 @@ const { connection }= require('../db');
 
 const getSession = (req, res) => {
     if (req.session.loggedin == true) {
-        res.render('pages/pagesPrincipal/home', {
+        res.render('pages/estudiante/home', {
           login: true,
           name: req.session.name
         });
