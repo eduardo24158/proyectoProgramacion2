@@ -498,6 +498,7 @@ cursor: pointer;
   border: none;
   background-color: #000;
   color: white;
+  cursor: pointer;
 }
 
 .btn-3::after{

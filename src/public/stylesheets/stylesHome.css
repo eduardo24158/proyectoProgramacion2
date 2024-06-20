@@ -100,11 +100,26 @@ height: 40px;
   width: 100%;
   height: 700px;
   display: flex;
-  align-items: center;
   justify-content: center;
   font-family: sans-serif;
   background-color: rgb(2, 15, 32);
 }
+
+.tituloDatos{
+  margin-top: 20px;
+  width: 400px;
+  height: 100px;
+  background-color: rgb(52, 73, 94);
+  border-radius: 10px;
+  color: rgb(238, 238, 238);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  box-shadow: 16px 14px 20px #0000008c;
+}
+
+
 
 /* estilos del footer*/
 
@@ -260,6 +275,7 @@ border-bottom-right-radius:20px ;
   border: none;
   background-color: #000;
   color: white;
+  cursor: pointer;
 }
 
 .btn-3::after{

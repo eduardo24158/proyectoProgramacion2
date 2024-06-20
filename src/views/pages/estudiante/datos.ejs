@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css" />
   <title>ultimate dace</title>
 </head>
 <body>
-  <h1>aqui los datos de la persona</h1>
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <h1 class="tituloUsuario"><%= name %></h1> 
+      <a href="/estudiante/home"><button class="btn-3">volver al home</button></a> 
+    </div>
+    </header>
+  <main class="centro">
+    <div class="tituloDatos">
+      <h1>Bienvenido</h1>
+      </div>
+      <div class="informacionDeDatos">
+
+
+
+      </div>
+  </main>
+  <%- include('../../partials/footer.ejs'); %>
 </body>
 </html>
