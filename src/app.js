@@ -10,7 +10,9 @@ const session = require('express-session');
 const estudianteRouter = require('./routes/estudiante');
 const sessionRouter = require('./routes/session.routes');
 const registerRouter = require('./routes/register.routes');
-const homeRouter = require('./routes/home.routes');
+const homeRouter = require('./routes/home/home.routes');
+const datosPersonales = require('./routes/home/datosPersonales.routes');
+const preEleccion = require('./routes/home/preSeleccion.routes');
 
 const app = express();
 
@@ -36,7 +38,19 @@ app.use(estudianteRouter);
 app.use(sessionRouter);
 app.use(registerRouter)
 app.use(homeRouter)
+app.use(datosPersonales);
+app.use(preEleccion);
 
+app.get('/', (req, res) => {
+  if (req.session.loggedin == true) {
+    res.render('pages/pagesPrincipal/home', {
+      login: true,
+      name: req.session.name
+    });
+  }else{
+    res.redirect('/');
+  }
+});
 
 // catch 404 and forward to error handler
 app.use((req,res,next) => {

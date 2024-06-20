@@ -1,57 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
-
-router.get('/',(req,res)=>{
-  if(req.session.loggedin != true){
-    res.render('pages/inicio');
-  }else{
-    res.redirect('/estudiante/home')
-  }
-})
-router.get('/estudiante/registro', (req, res) => {
-  if(req.session.loggedin != true){
-    res.render('pages/estudiante/register', {
-      error: false
+router.get('/', (req, res) => {
+  if (req.session.loggedin == true) {
+    res.render('pages/estudiante/home', {
+      login: true,
+      name: req.session.name
     });
   }else{
-    res.redirect('/estudiante/home')
+    res.render('pages/inicio');
   }
 });
-
-router.get('/estudiante/inicio', (req, res) => {
-  if(req.session.loggedin != true){
-    res.render('pages/estudiante/inicioDeSesion');
-  }else{
-    res.redirect('/estudiante/home')
-  }
-});
-
-router.get('/estudiante/home', (req, res) => {
-  if(req.session.loggedin == true){
-
-res.render('pages/estudiante/home', {name : req.session.name});
-  
-}else{
-    res.redirect('/')
-  }
-});
-router.get('/estudiante/datos',(req,res)=>{
-  
-  res.render('pages/estudiante/datos',{name : req.session.name});
-})
-router.get('/estudiante/preEleccion',(req,res)=>{
-  res.render('pages/estudiante/preEleccionMateria');
-})
-
-router.get('/estudiante/datos',(req,res)=>{
-  res.render('pages/estudiante/datos');
-})
 
 router.get('/TerminosCondiciones', (req, res) => {
   res.render('pages/terminos');
 });
-
 
 module.exports = router;
