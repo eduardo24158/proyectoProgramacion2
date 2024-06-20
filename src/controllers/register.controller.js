@@ -2,9 +2,16 @@ const bcrypt = require('bcrypt');
 const { connection } = require('../db');
 
 const getRegister = (req, res) => {
-    res.render('pages/estudiante/register', {
-        error: false
-    });
+    if (req.session.loggedin == true) {
+        res.render('pages/pagesPrincipal/home', {
+          login: true,
+          name: req.session.name
+        });
+    }else{
+        res.render('pages/estudiante/register', {
+            error: false
+        });
+    }
 };
 
 const postRegisterStudent = async (req, res) => {
@@ -14,7 +21,6 @@ const postRegisterStudent = async (req, res) => {
     const email = req.body.email;
     const cedula = req.body.cedula;
     const password = req.body.password;
-    console.log(password);
 
     if ((parseInt(cedula) < 1000000) || (parseInt(cedula) > 40000000)) {
         return res.render('pages/estudiante/register', {
@@ -37,7 +43,7 @@ const postRegisterStudent = async (req, res) => {
                 alertIcon: "error",
                 showConfirmButtom: false,
                 timer: 2000,
-                ruta: '/estudiante/index'
+                ruta: '/estudiante/session'
             });
         }else{
             connection.query('INSERT INTO estudiantes SET ?', {name:name, lastname:lastname, age:age, email:email, cedula:cedula, password:encryp}, async(error, result) => {

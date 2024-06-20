@@ -9,17 +9,17 @@
 <body>
   <%- include('../../partials/header.ejs'); %>
   <div class="encabezados Centro">
-    <a href="/estudiante/inicio"><button class="btn-3"> iniciar sesion</button></a>
-    <a href="/estudiante/registro"><button class="btn-3">registro</button></a> 
-    <a href="/"><button class="btn-3">inicio</button></a> 
+    <a href="/estudiante/session"><button class="btn-3">Iniciar sesion</button></a>
+    <a href="/estudiante/register"><button class="btn-3">Registro</button></a> 
+    <a href="/"><button class="btn-3">Inicio</button></a> 
   </div>
   </header>
 <main class="centro centro--inicioDeSesion">
     <div class="tituloDelRegistro">
-    <h1>iniciar sesion</h1>
+    <h1>Iniciar sesión</h1>
     </div>
     <div class="formulario ForminicioDeSesion">
-      <form action="/session" method="post" class="formu">
+      <form action="/estudiante/session" method="post" class="formu">
         <div class="username">
           <input class="inpust" type="text" name="email" required />
           <label class="labe">Correo</label>
@@ -30,7 +30,7 @@
         </div>
         <div class="formuAbajo">
         <p class="pa">Estoy de acuerdo con <a href="/TerminosCondiciones" class="a">Termino y Condiciones</a></p>
-        <button type="submit" class="btn_1" >iniciar sesion</button>
+        <button type="submit" class="btn_1">Iniciar sesion</button>
         <p class="pa"><a href="/estudiante/register" class="a">¿No tienes una cuenta?</a></p>
         </div>
   </form>
@@ -46,7 +46,7 @@
           showConfirmButtom: '<%= showConfirmButtom %>',
           timer: '<%= timer %>'
         }).then(() => {
-          window.location = '/<%= ruta %>'
+          window.location = '/<%= ruta %>';
         })
       </script>
       <% } %>

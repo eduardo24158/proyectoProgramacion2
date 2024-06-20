@@ -3,8 +3,8 @@ const { getSession, postSession}= require('../controllers/session.controller');
 
 const router = Router();
 
-router.get('/session', getSession);
+router.get('/estudiante/session', getSession);
 
-router.post('/session', postSession);
+router.post('/estudiante/session', postSession);
 
 module.exports = router;
