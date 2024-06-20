@@ -30,6 +30,10 @@ const postSession = async (req, res) => {
                 });
             }else{
                 req.session.name = result[0].name;
+                req.session.lastname =result[0].lastname;
+                req.session.age=result[0].age;
+                req.session.email= result[0].email;
+                req.session.cedula= result[0].cedula;
                 req.session.loggedin = true;
                 res.render('pages/estudiante/inicioDeSesion', {
                     alert: true,
@@ -54,6 +58,11 @@ const postSession = async (req, res) => {
         });
     }
 }
+
+const MostrarDatos= async(req, res)=>{
+
+}
+
 
 module.exports = {
     getSession,
