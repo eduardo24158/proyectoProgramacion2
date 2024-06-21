@@ -15,12 +15,19 @@
     </header>
   <main class="centro">
     <div class="tituloDatos">
-      <h1>Bienvenido</h1>
+      <h1>tus datos </h1>
       </div>
       <div class="informacionDeDatos">
-
-
-
+        <h1 class="huno">nombre:</h1>
+        <h2 class="hdos"><%= name %></h2>
+        <h1 class="huno">apellido:</h1>
+        <h2 class="hdos"><%= lastname %></h2>
+        <h1 class="huno">edad:</h1>
+        <h2 class="hdos"><%= age %></h2>
+        <h1 class="huno">correo:</h1>
+        <h2 class="hdos"><%= email %></h2>
+        <h1 class="huno">cedula:</h1>
+        <h2 class="hdos"><%= cedula %></h2>
       </div>
   </main>
   <%- include('../../partials/footer.ejs'); %>
