@@ -43,7 +43,7 @@ app.use(preEleccion);
 
 app.get('/', (req, res) => {
   if (req.session.loggedin == true) {
-    res.render('pages/pagesPrincipal/home', {
+    res.render('pages/estudiante/home', {
       login: true,
       name: req.session.name
     });
