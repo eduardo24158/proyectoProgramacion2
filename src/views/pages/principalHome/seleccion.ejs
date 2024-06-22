@@ -19,16 +19,15 @@
 </div>
 <div class="centroSeleccionDeMateria">
   <h2 class="SubtituloSeleccion">selecciona las materias que quieres ver</h2>
-  <h2 class="SubtituloSeleccion">(ten en cuenta las unidades de credito)</h2>
-  <form action="" method="post" class="formularioSeleccion">
+  <h2 class="SubtituloSeleccion">(ten en cuenta las unidades de credito,tienes <%= ud %>)</h2>
+  <form action="/estudiante/preEleccion/seleccion" method="post" class="formularioSeleccion">
   <%for (const i in arreglo) {%>
     <div class="mostrandoMateria">
-      <p class="pseleccion">Creditos: <%=arreglo[i].unidadCredito %> </p> <p class="pseleccion"> materia : <%=arreglo[i].materia %></p>
+      <input type="checkbox" class="check" name="<%=arreglo[i].nameMateria %>" value="<%= arreglo[i].creditoMateria %>"><%= arreglo[i].nameMateria %>
     </div>
-  <%}%>
-  <button class="btn_1">confirmar</button>
+    <%}%>
+    <button class="btn_1" type="submit">confirmar</button>
 </form>
-
 </div>
 </main>
 <%- include('../../partials/footer.ejs'); %>
