@@ -100,7 +100,6 @@ height: 40px;
   width: 100%;
   height: 700px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
   font-family: sans-serif;
@@ -109,44 +108,24 @@ height: 40px;
 
 }
 
-.tituloDatos{
+
+
+.inicioDePreeleccion {
   margin-top: 20px;
-  width: 400px;
-  height: 100px;
+  width: 700px;
+  height: 300px;
   background-color: rgb(52, 73, 94);
   border-radius: 10px;
   color: rgb(238, 238, 238);
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   font-size: 19px;
   box-shadow: 16px 14px 20px #0000008c;
+  gap: 10px;
 }
 
-.informacionDeDatos{
-  width: 500px;
-  height: 500px;
-  background-color:  rgb(52, 73, 94) ;
-  border-radius: 10px;
-  box-shadow: 16px 14px 20px #0000008c;
-}
-
-.hdos{
-  text-align: center;
-  font-size: 25px;
-  color: white;
-  border: 2px solid black;
-  background-color: #000;
-}
-.huno{
-  font-size: 25px;
-text-align: center;
-margin-bottom: 10px;
-margin-top: 10px;
-border-bottom: 2px solid blue ;
-width: 200px;
-background-color: #212F3D;
-}
 /* estilos del footer*/
 
 .parteDeAbajo {
@@ -339,4 +318,202 @@ border-bottom-right-radius:20px ;
   background-color: #0c51b9;
   border: 3px solid #180570;
   transform: skew(20deg,0deg) scale(1.1);
+}
+
+.btn_1{
+  width: 200px;
+  height: 50px;
+text-decoration: none;
+font-size: 20px;
+position: relative;
+margin: 10px;
+background-color: #0748aa;
+color: white;
+border-radius: 20px;
+transition: transform 0.3s ease;
+border: 2px solid rgb(7, 24, 173);
+cursor: pointer;
+}
+
+.btn_1::after,.btn_1::before{
+  content: '';
+  position: absolute;
+  opacity: 0.3;
+  background: #071ac0;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition:transform 0.3s ease ;
+  border: 2px solid rgb(7, 24, 173);
+}
+
+.btn_1:hover{
+  transform: translate(-10px,-10px);
+}
+
+.btn_1:hover::after{
+  transform: translate(-8px,4px);
+}
+
+.btn_1:hover::after{
+  transform: translate(8px,4px);
+}
+
+.btn_1:hover::before{
+  transform: translate(10px,10px);
+}
+
+
+
+
+/*estilos de datos*/
+
+.tituloDatos{
+  margin-top: 20px;
+  width: 400px;
+  height: 100px;
+  background-color: rgb(52, 73, 94);
+  border-radius: 10px;
+  color: rgb(238, 238, 238);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  box-shadow: 16px 14px 20px #0000008c;
+}
+
+.informacionDeDatos{
+  width: 850px;
+  height: 150px;
+  background-color:  rgb(52, 73, 94) ;
+  border-radius: 10px;
+  box-shadow: 16px 14px 20px #0000008c;
+display: flex;
+justify-content: center;
+text-align: center;
+color: white;
+}
+
+.tabla{
+  width: 750px;
+  font-size: 28px;
+  border: rgb(0, 0, 0);
+}
+.CentroDatos{
+  height: 800px;
+}
+.fila{
+  background-color: #062a61;
+}
+
+/* estilos del periodo*/
+
+
+.TituloPerdiodo{
+  font-size: 30px;
+}
+
+.seleccionDePeriodo{
+  width: 400px;
+  height: 25px;
+  border-radius: 5px;
+  color: white;
+  background-color: #000000;
+}
+.formuPeriodo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.afirmativo{
+  width: 400px;
+  font-size: 30px;
+}
+
+.aperiodo{
+  color: #042e6b;
+}
+.p_Procedimiento{
+ margin-top: 3px;
+}
+
+.botonLink{
+  color: white;
+  width: 70px;
+  background-color: #000000;
+  border-radius: 5px;
+  border: none;
+  border-bottom: 2px solid #071ac0;
+  cursor: pointer;
+  transition: .3s ease;
+  text-decoration: none;
+}
+
+.botonLink:hover{
+  background-color: #1b1b1b;
+  transition: .3s ease;
+}
+
+/* estilos de seleccion*/
+
+
+.CentroSeleccion{
+  height: auto;
+}
+
+.tituloDeSeleccion{
+  margin-top: 20px;
+  width: 600px;
+  height: 100px;
+  background-color: rgb(52, 73, 94);
+  border-radius: 10px;
+  color: rgb(238, 238, 238);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  box-shadow: 16px 14px 20px #0000008c;
+  text-align: center;
+}
+
+.centroSeleccionDeMateria{
+  margin-top: 25px;
+  width: 600px;
+  height: 600px;
+  background-color: rgb(52, 73, 94);
+  border-radius: 10px;
+  box-shadow: 16px 14px 20px #0000008c;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.SubtituloSeleccion{
+  color: white;
+  font-size: 20px;
+}
+
+.mostrandoMateria{
+  width: 500px;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:2px solid black;
+}
+.formularioSeleccion{
+  width: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+.pseleccion{
+  margin-left: 15px;
 }

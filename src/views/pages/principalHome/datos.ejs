@@ -13,21 +13,29 @@
       <a href="/estudiante/home"><button class="btn-3">volver al home</button></a> 
     </div>
     </header>
-  <main class="centro">
+  <main class="centro CentroDatos">
     <div class="tituloDatos">
       <h1>tus datos </h1>
       </div>
       <div class="informacionDeDatos">
-        <h1 class="huno">nombre:</h1>
-        <h2 class="hdos"><%= name %></h2>
-        <h1 class="huno">apellido:</h1>
-        <h2 class="hdos"><%= lastname %></h2>
-        <h1 class="huno">edad:</h1>
-        <h2 class="hdos"><%= age %></h2>
-        <h1 class="huno">correo:</h1>
-        <h2 class="hdos"><%= email %></h2>
-        <h1 class="huno">cedula:</h1>
-        <h2 class="hdos"><%= cedula %></h2>
+
+  <table class="tabla" border="1">
+  <tr>
+    <td class="fila">Nombre</td>
+    <td class="fila">Apellido</td>
+    <td class="fila">Edad</td>
+    <td class="fila">Cedula</td>
+    <td class="fila">Correo</td>
+  </tr>
+  <tr class="fila">
+    <td class="fila"><%=name%></td>
+    <td class="fila"><%=lastname%></td>
+    <td class="fila"><%=age%></td>
+    <td class="fila"><%=cedula%></td>
+    <td class="fila"><%=email%></td>
+  </tr>
+</table>
+
       </div>
   </main>
   <%- include('../../partials/footer.ejs'); %>

@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css" />
   <title>Seleccionar Periodo</title>
 </head>
 <body>
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <h1 class="tituloUsuario"><%= name %></h1> 
+      <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+      <a href="/"><button class="btn-3">volver al home</button></a> 
+    </div>
+  </header>
+    <main class="centro">
+      <div class="inicioDePreeleccion " >
   <h1>Menú de Selección de la preselección</h1>
-  <p>Presiona acá para que empieces a configurar tu horario, accediendo primero a la elección del periodo <a href="/estudiante/preEleccion/periodo">Periodo</a></p>
+  <p>Presiona acá para que empieces a configurar tu horario, accediendo primero a la elección del periodo</p>
+  <a href="/estudiante/preEleccion/periodo"><button class="btn_1">periodo</button></a>
+      </div>
+  </main>
+    <%- include('../../partials/footer.ejs'); %>
 </body>
 </html>

@@ -7,7 +7,7 @@ router.get('/estudiante/datos',(req,res)=>{
     console.log(req.session.name);
     console.log(req.session.lastname);
     if(req.session.loggedin == true) {
-        res.render('pages/estudiante/datos', {
+        res.render('pages/principalHome/datos', {
           login: true,
           name: req.session.name,
           lastname: req.session.lastname,
