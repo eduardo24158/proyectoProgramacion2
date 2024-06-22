@@ -526,3 +526,39 @@ color: white;
   cursor: pointer;
   border-radius: 20px;
 }
+
+
+/*estilos del ConfirmEleccion*/
+
+.centroConfimacion{
+  width: 100%;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(2, 15, 32);;
+}
+.tituloConfi{
+  text-align: center;
+}
+.principalConfirm{
+  margin-top: 20px;
+  width: 300px;
+  height: 50px;
+  background-color:  rgb(52, 73, 94);
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.infoDeConfirm{
+  width: 400px;
+  height: auto;
+  background-color:  rgb(52, 73, 94);
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.hdosinfo{
+  color: white;
+}

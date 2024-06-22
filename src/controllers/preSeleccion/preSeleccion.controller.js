@@ -1,15 +1,57 @@
 const { connection } = require("../../db");
 
 const getPre = (req, res) => {
-  if (req.session.loggedin == true) {
-    res.render("pages/principalHome/preEleccionMateria", {
-      login: true,
-      name: req.session.name,
-    });
-  } else {
-    res.redirect("/");
-  }
-};
+    if (req.session.loggedin == true) {
+        res.render('pages/principalHome/preEleccionMateria', {
+        login: true,
+        name: req.session.name
+        });
+    }else{
+        res.redirect('/');
+    }
+}
+
+const getseleccion = (req, res) => {
+    connection.query('SELECT * FROM materias',(reject,result)=>{
+        console.log(result)
+    res.render('pages/principalHome/seleccion',{
+        arreglo: result,
+        ud:9
+    })
+    })
+}
+
+const postseleccion=(req,res)=>{
+    const data=req.body;
+    let arregloNombre= [];
+    let udc=21;
+    const datos = Object.entries(data);
+
+    datos.forEach(([contenido, value]) => {
+        udc-=value;
+        if(udc>12){
+        arregloNombre.push(contenido)
+        }
+        });
+
+        if(udc<12){
+        console.log('sobrepaso su limite de unidades de creditos quite alguna materia');
+        res.redirect('/estudiante/preEleccion/seleccion')
+        } else{
+        let voto=1;
+        for (let i = 0; i < arregloNombre.length; i++) {
+        const query= "UPDATE materias SET  creditoMateria =creditoMateria+ ? WHERE nameMateria = ?"
+        connection.query(query,[voto,arregloNombre[i]],async (error,result)=>{if(error){  console.error('Error updating the record:', error); }})
+        console.log('se a guardados los votos')
+        }
+        console.log(arregloNombre)
+        res.render('pages/principalHome/ConfirmEleccion',{nombre:arregloNombre});
+    }
+}
+
+
+
+
 
 const getPeriodo = (req, res) => {
   if (req.session.loggedin == true) {

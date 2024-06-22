@@ -4,8 +4,8 @@ const { connection } = require('../db');
 const getRegister = (req, res) => {
     if (req.session.loggedin == true) {
         res.render('pages/estudiante/home', {
-          login: true,
-          name: req.session.name
+            login: true,
+            name: req.session.name
         });
     }else{
         res.render('pages/estudiante/register', {
