@@ -36,6 +36,7 @@ const postseleccion=(req,res)=>{
 
         if(udc<12){
         console.log('sobrepaso su limite de unidades de creditos quite alguna materia');
+        res.redirect('/estudiante/preEleccion/seleccion')
         } else{
         let voto=1;
         for (let i = 0; i < arregloNombre.length; i++) {
