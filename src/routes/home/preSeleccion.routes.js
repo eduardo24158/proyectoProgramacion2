@@ -11,4 +11,5 @@ router.post('/estudiante/preEleccion/periodo', postPeriodo);
 router.get('/estudiante/preEleccion/seleccion',getseleccion);
 router.post('/estudiante/preEleccion/seleccion',postseleccion);
 
+
 module.exports = router;

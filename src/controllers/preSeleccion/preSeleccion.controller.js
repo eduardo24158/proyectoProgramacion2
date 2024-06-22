@@ -26,19 +26,26 @@ const postseleccion=(req,res)=>{
     let arregloNombre= [];
     let udc=21;
     const datos = Object.entries(data);
+
     datos.forEach(([contenido, value]) => {
         udc-=value;
-        if(udc<12){
-                console.log('sobrepaso su limite de unidades de creditos quite alguna materia');
-            }else{
-                let voto=1;
-                const query= "UPDATE materias SET  creditoMateria =creditoMateria+ ? WHERE nameMateria = ?"
-                connection.query(query,[voto,contenido],async (error,result)=>{if(error){  console.error('Error updating the record:', error); }})
-                    console.log('se a guardados los votos')
-                    arregloNombre.push(contenido);
-            }
+        if(udc>12){
+        arregloNombre.push(contenido)
+        }
         });
-            console.log(arregloNombre)
+
+        if(udc<12){
+        console.log('sobrepaso su limite de unidades de creditos quite alguna materia');
+        } else{
+        let voto=1;
+        for (let i = 0; i < arregloNombre.length; i++) {
+        const query= "UPDATE materias SET  creditoMateria =creditoMateria+ ? WHERE nameMateria = ?"
+        connection.query(query,[voto,arregloNombre[i]],async (error,result)=>{if(error){  console.error('Error updating the record:', error); }})
+        console.log('se a guardados los votos')
+        }
+        console.log(arregloNombre)
+        res.render('pages/principalHome/ConfirmEleccion',{nombre:arregloNombre});
+    }
 }
 
 
