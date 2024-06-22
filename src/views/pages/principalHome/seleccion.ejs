@@ -23,9 +23,9 @@
   <form action="/estudiante/preEleccion/seleccion" method="post" class="formularioSeleccion">
   <%for (const i in arreglo) {%>
     <div class="mostrandoMateria">
-      <input type="checkbox" class="check" name="<%=arreglo[i].nameMateria %>" value="<%= arreglo[i].creditoMateria %>"><%= arreglo[i].nameMateria %>
+      <input type="checkbox" class="check" name="<%= arreglo[i].materia %>" value="<%= arreglo[i].unidadCredito %>"><%= arreglo[i].materia %>
     </div>
-    <%}%>
+  <%}%>
     <button class="btn_1" type="submit">confirmar</button>
 </form>
 </div>
