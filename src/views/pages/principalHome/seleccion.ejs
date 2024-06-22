@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../.././stylesheets/stylesHome.css">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('../../partials/header.ejs'); %>
+  <div class="encabezados Centro">
+    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+    <a href="/"><button class="btn-3">volver al home</button></a> 
+  </div>
+</header>
+<main class="centro CentroSeleccion">
+<div class="tituloDeSeleccion">
+  <h1>Bienvenido a la seleccion de materia</h1>
+</div>
+<div class="centroSeleccionDeMateria">
+  <h2 class="SubtituloSeleccion">selecciona las materias que quieres ver</h2>
+  <h2 class="SubtituloSeleccion">(ten en cuenta las unidades de credito)</h2>
+  <form action="" method="post" class="formularioSeleccion">
+  <%for (const i in arreglo) {%>
+    <div class="mostrandoMateria">
+      <p class="pseleccion">Creditos: <%=arreglo[i].creditoMateria %> </p> <p class="pseleccion"> materia : <%=arreglo[i].nameMateria %></p>
+    </div>
+    <%}%>
+  <button class="btn_1">confirmar</button>
+</form>
+
+</div>
+</main>
+<%- include('../../partials/footer.ejs'); %>
+</body>
+</html>

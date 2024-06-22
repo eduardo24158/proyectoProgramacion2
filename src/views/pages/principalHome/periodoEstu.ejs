@@ -3,24 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../.././stylesheets/stylesHome.css">
   <title>Periodo</title>
 </head>
 <body>
-  <form action="/estudiante/preEleccion/periodo" method="post">
-    <h3>Seleccione el Periodo</h3>
-    <select name="select">
+  <%- include('../../partials/header.ejs'); %>
+  <div class="encabezados Centro">
+    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+    <a href="/"><button class="btn-3">volver al home</button></a> 
+  </div>
+</header>
+<main class="centro">
+  <div class="inicioDePreeleccion ">
+  <form action="/estudiante/preEleccion/periodo" method="post" class="formuPeriodo">
+    <h3 class="TituloPerdiodo">Seleccione el Periodo</h3>
+    <select name="select" class="seleccionDePeriodo">
+      <option  selected disabled >elige el periodo</option>
       <option value="activo">Mar - Jul 2024-2</option>
       <option value="inactivo">Oct - Feb 2025-1</option>
     </select>
     <% if (proceso) { %>
-      <p><%= estatus %></p>
-      <p>Maravilloso, procedamos al apartado de <a href="#">selección</a></p>
+      <div class="afirmativo">
+      <p class="p_Procedimiento"><%= estatus %></p>
+      <p class="p_Procedimiento">Maravilloso, procedamos al apartado de <a class="botonLink" href="/estudiante/preEleccion/seleccion">seleccion</a></p>
+      </div>
     <% } %>
-
     <% if (!proceso) { %>
       <p><%= estatus %></p>
     <% } %>
-    <button type="submit">Listo</button>
+    <button type="submit" class="btn_1">Listo</button>
   </form>
+  </div>
+</main>
 </body>
+<%- include('../../partials/footer.ejs'); %>
 </html>

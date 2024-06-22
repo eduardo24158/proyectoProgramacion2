@@ -3,13 +3,25 @@ const { connection } = require('../../db');
 const getPre = (req, res) => {
     if (req.session.loggedin == true) {
         res.render('pages/principalHome/preEleccionMateria', {
-          login: true,
-          name: req.session.name
+        login: true,
+        name: req.session.name
         });
     }else{
         res.redirect('/');
     }
 }
+
+const getseleccion = (req, res) => {
+    connection.query('SELECT * FROM materias',(reject,result)=>{
+        console.log(result)
+    res.render('pages/principalHome/seleccion',{
+        arreglo: result})
+    })
+}
+
+
+
+
 
 const getPeriodo = (req, res) => {
     if (req.session.loggedin == true) {
@@ -26,6 +38,7 @@ const postPeriodo = async (req, res) => {
     const semestre = req.body.select;
     
     connection.query('SELECT nombrePeriodo FROM periodo WHERE estatus = ?', [semestre], async(error, result) => {
+        console.log(result)
         if (error) {
             console.log(error);
         }
@@ -46,5 +59,6 @@ const postPeriodo = async (req, res) => {
 module.exports = {
     getPre,
     getPeriodo,
-    postPeriodo
+    postPeriodo,
+    getseleccion
 }
