@@ -4,7 +4,6 @@ const { getPre, getPeriodo, postPeriodo,getseleccion} = require('../../controlle
 const router = Router();
 
 router.get('/estudiante/preEleccion', getPre);
-
 router.get('/estudiante/preEleccion/periodo', getPeriodo);
 router.post('/estudiante/preEleccion/periodo', postPeriodo);
 
