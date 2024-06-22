@@ -23,22 +23,22 @@ const getseleccion = (req, res) => {
 
 const postseleccion=(req,res)=>{
     const data=req.body;
-    let objeto= {};
+    let arregloNombre= [];
     let udc=21;
     const datos = Object.entries(data);
     datos.forEach(([contenido, value]) => {
         udc-=value;
-        if(udc>12){ 
-            let voto=1;
-            connection.query('UPDATE preseleccioncursos.materias SET creditoMateria= ?  WHERE materias.nameMateria= ? ',voto,contenido,async (error,result)=>{ console.log(result)})
-                }
-            });
-
-    if(udc<12){
+        if(udc<12){
                 console.log('sobrepaso su limite de unidades de creditos quite alguna materia');
             }else{
-                console.log('se ha guardado sus votos');
+                let voto=1;
+                const query= "UPDATE materias SET  creditoMateria =creditoMateria+ ? WHERE nameMateria = ?"
+                connection.query(query,[voto,contenido],async (error,result)=>{if(error){  console.error('Error updating the record:', error); }})
+                    console.log('se a guardados los votos')
+                    arregloNombre.push(contenido);
             }
+        });
+            console.log(arregloNombre)
 }
 
 
