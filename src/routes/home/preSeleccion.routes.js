@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getPre, getPeriodo, postPeriodo,getseleccion,postseleccion} = require('../../controllers/preSeleccion/preSeleccion.controller');
+const { getPre, getPeriodo, postPeriodo,getseleccion,postseleccion,getResultados} = require('../../controllers/preSeleccion/preSeleccion.controller');
 
 const router = Router();
 
@@ -9,6 +9,6 @@ router.post('/estudiante/preEleccion/periodo', postPeriodo);
 
 router.get('/estudiante/preEleccion/seleccion',getseleccion);
 router.post('/estudiante/preEleccion/seleccion',postseleccion);
-
+router.get('/estudiante/preEleccion/resultados',getResultados)
 
 module.exports = router;

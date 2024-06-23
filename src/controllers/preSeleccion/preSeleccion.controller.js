@@ -106,14 +106,17 @@ const postPeriodo = async (req, res) => {
     });
 }
 
-
+const getResultados=(req,res)=>{
+  res.render('pages/principalHome/resultadosPreEleccion')
+}
 
 module.exports = {
     getPre,
     getPeriodo,
     postPeriodo,
     getseleccion,
-    postseleccion
+    postseleccion,
+    getResultados
 }
 
 /*
