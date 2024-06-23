@@ -12,38 +12,65 @@ const getPre = (req, res) => {
 }
 
 const getseleccion = (req, res) => {
-    connection.query('SELECT * FROM materias',(reject,result)=>{
-    res.render('pages/principalHome/seleccion',{
-        arreglo: result,
-        ud:9
-    })
-    })
-}
+    if(req.session.loggedin == true){
+      connection.query('SELECT * FROM materias',(error,result)=>{
+        if(error){
+          console.log(error);
+        }
+        
+        res.render('pages/principalHome/seleccion',{
+          arreglo: result,
+          ud:9,
+          status: false,
+          close: false
+        });
+      });
+    }else{
+      res.redirect('/');
+    }
+  };
 
 const postseleccion=(req,res)=>{
-    const data=req.body;
-    let arregloNombre= [];
-    let udc=21;
+    const data = req.body;
+    let arregloNombre = [];
+    let udc = 21;
     const datos = Object.entries(data);
+    req.session.close = false;
+
     datos.forEach(([contenido, value]) => {
-        udc-=value;
-        if(udc>12){
-        arregloNombre.push(contenido)
+        udc -= value;
+
+        if(udc > 12){
+          arregloNombre.push(contenido);
         }
+    });
+
+      if(udc < 12){
+        res.render('pages/principalHome/seleccion', {
+          ud: 9,
+          status: true,
+          men: 'Te estás SobrePasando de Unidades de Crédito',
+          arreglo: false,
+          close: false
         });
-        if(udc<12){
-        console.log('sobrepaso su limite de unidades de creditos quite alguna materia');
-        res.redirect('/estudiante/preEleccion/seleccion')
-        } else{
+      }else{
         let voto=1;
         for (let i = 0; i < arregloNombre.length; i++) {
-        const query= "UPDATE materias SET  votosMaterias =votosMaterias+ ? WHERE nameMateria = ?"
-        connection.query(query,[voto,arregloNombre[i]],async (error,result)=>{if(error){  console.error('Error updating the record:', error); }})
-        console.log('se a guardados los votos')
+          const query = "UPDATE materias SET unidadCredito = unidadCredito + ? WHERE materia = ?"
+          connection.query(query, [voto, arregloNombre[i]], async (error, result)=>{
+            if(error){
+              console.error('Error updating the record:', error); 
+            }
+          });
+          console.log('se han guardado los datos');
         }
-        console.log(arregloNombre)
-        res.render('pages/principalHome/ConfirmEleccion',{nombre:arregloNombre});
-    }
+        console.log(arregloNombre);
+        req.session.close = true;
+        res.render('pages/principalHome/ConfirmEleccion',{
+          nombre: arregloNombre,
+          close: req.session.close
+        });
+      }
 }
 
 
@@ -81,6 +108,8 @@ const postPeriodo = async (req, res) => {
         }
     });
 }
+
+
 
 module.exports = {
     getPre,
