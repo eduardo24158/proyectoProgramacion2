@@ -8,6 +8,9 @@
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
+  <% if (close) { %>
+    <p>Se cerró el proceso de inscripción</p>
+  <% } else { %>
   <div class="encabezados Centro">
     <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
     <a href="/"><button class="btn-3">volver al home</button></a> 
@@ -26,6 +29,7 @@
     </div>
     <a href="/"><button class="btn_1"> regresar al home</button></a>
   </main>
+  <% } %>
   <%- include('../../partials/footer.ejs'); %>
 </body>
 </html>
