@@ -8,14 +8,14 @@
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
-  <% if (close) { %>
-    <p>Se cerró el proceso de inscripción</p>
-  <% } else { %>
   <div class="encabezados Centro">
     <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
     <a href="/"><button class="btn-3">volver al home</button></a> 
   </div>
 </header>
+<% if (close) { %>
+  <p>Se cerró el proceso de inscripción</p>
+<% } else { %>
   <main class="centroConfimacion ">
     <div class="principalConfirm">
   <h1 class="tituloConfi">has votado por:</h1>
