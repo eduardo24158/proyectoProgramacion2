@@ -218,6 +218,7 @@ p {
   border-left: .5px solid blue;
   border-right:.5px solid blue;
   border-top:  .5px solid blue;
+  text-align: center;
 }
 
 .card:hover .img-personaje{
@@ -600,4 +601,17 @@ color: white;
 }
 .ConfirmEleccion{
   margin-bottom: 15px;
+}
+
+/* home del administrador*/
+
+.AdminCentro{
+  width: 100%;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  background-color: rgb(2, 15, 32);
+  gap: 20px;
 }

@@ -15,6 +15,7 @@ const datosPersonales = require('./routes/home/datosPersonales.routes');
 const DatosAdmin=require('./routes/administrador/datosAdmin.routes')
 const preEleccion = require('./routes/home/preSeleccion.routes');
 const AdministradorRouter= require('./routes/administrador/administrador.routes');
+const CarrerasRouter = require('./routes/administrador/carreras.routes')
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -43,6 +44,7 @@ app.use(datosPersonales);
 app.use(DatosAdmin);
 app.use(preEleccion);
 app.use(AdministradorRouter);
+app.use(CarrerasRouter);
 
 app.get('/', (req, res) => {
   if (req.session.loggedin == true) {
