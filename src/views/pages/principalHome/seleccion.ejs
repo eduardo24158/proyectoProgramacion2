@@ -21,11 +21,15 @@
   <h2 class="SubtituloSeleccion">selecciona las materias que quieres ver</h2>
   <h2 class="SubtituloSeleccion">(ten en cuenta las unidades de credito,tienes <%= ud %>)</h2>
   <form action="/estudiante/preEleccion/seleccion" method="post" class="formularioSeleccion">
-  <%for (const i in arreglo) {%>
+  <% if (status) { %>
+    <p><%= men %></p>
+    <p><a href="/estudiante/preEleccion/seleccion">Presiona aquí</a> para volver a intentarlo</p>
+  <% } %>
+  <% for (const i in arreglo) { %>
     <div class="mostrandoMateria">
       <input type="checkbox" class="check" name="<%= arreglo[i].materia %>" value="<%= arreglo[i].unidadCredito %>"><%= arreglo[i].materia %>
     </div>
-  <%}%>
+  <% } %>
     <button class="btn_1" type="submit">confirmar</button>
 </form>
 </div>
