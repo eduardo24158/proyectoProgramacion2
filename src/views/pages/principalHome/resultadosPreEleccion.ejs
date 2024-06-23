@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
   <title>resultados</title>
 </head>
-<body>
-  <h1>aqui los resultados</h1>
+<body class="bodyDeSeleccion">
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+      <a href="/"><button class="btn-3">volver al home</button></a> 
+    </div>
+  </header>
+  <main class="centroResultados">
+    <div class="tituloDatos">
+      <h1>los resultados </h1>
+      </div>
+      <div class="resultadosDePreEleccion">
+      </div>
+  </main>
+<%- include('../../partials/footer.ejs'); %>
 </body>
 </html>

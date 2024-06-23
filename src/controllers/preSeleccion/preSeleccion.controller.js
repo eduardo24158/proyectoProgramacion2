@@ -107,6 +107,7 @@ const postPeriodo = async (req, res) => {
 }
 
 const getResultados=(req,res)=>{
+  const query='SELECT materias.nameMateria,materias.creditoMateria,semestre.nombreSemestre,semestre.id,materias.semestre_id  FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
   res.render('pages/principalHome/resultadosPreEleccion')
 }
 
