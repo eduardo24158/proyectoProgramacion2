@@ -12,8 +12,9 @@ const sessionRouter = require('./routes/session.routes');
 const registerRouter = require('./routes/register.routes');
 const homeRouter = require('./routes/home/home.routes');
 const datosPersonales = require('./routes/home/datosPersonales.routes');
+const DatosAdmin=require('./routes/administrador/datosAdmin.routes')
 const preEleccion = require('./routes/home/preSeleccion.routes');
-
+const AdministradorRouter= require('./routes/administrador/administrador.routes');
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -39,7 +40,9 @@ app.use(sessionRouter);
 app.use(registerRouter)
 app.use(homeRouter)
 app.use(datosPersonales);
+app.use(DatosAdmin);
 app.use(preEleccion);
+app.use(AdministradorRouter);
 
 app.get('/', (req, res) => {
   if (req.session.loggedin == true) {

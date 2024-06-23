@@ -4,10 +4,15 @@ const { connection }= require('../db');
 const getSession = (req, res) => {
     if (req.session.loggedin == true) {
         res.render('pages/estudiante/home', {
-          login: true,
-          name: req.session.name
+        login: true,
+        name: req.session.name
         });
-    }else{
+        }else if (req.session.Adminloggedin == true) {
+        res.render('pages/administrador/administradorHome', {
+        login: true,
+        AdminName: req.session.adminName
+        });
+        }else{
         res.render('pages/estudiante/inicioDeSesion');
     }
 };
@@ -57,10 +62,6 @@ const postSession = async (req, res) => {
             ruta: 'estudiante/session'
         });
     }
-}
-
-const MostrarDatos= async(req, res)=>{
-
 }
 
 

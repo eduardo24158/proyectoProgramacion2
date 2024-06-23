@@ -465,17 +465,29 @@ color: white;
 /* estilos de seleccion*/
 
 
+/*estilos de la seleccion*/
+.bodyDeSeleccion{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .CentroSeleccion{
-  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  height: fit-content;
+  background-color: rgb(2, 15, 32);
+  flex-direction: column;
 }
 
 .tituloDeSeleccion{
   margin-top: 20px;
   width: 600px;
-  height: 100px;
+  height: fit-content;
   background-color: rgb(52, 73, 94);
   border-radius: 10px;
-  color: rgb(238, 238, 238);
+  color: rgb(231, 231, 231);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -495,27 +507,37 @@ color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex: 1;
 }
 
 .SubtituloSeleccion{
-  color: white;
+  color: rgb(221, 216, 216);
   font-size: 20px;
 }
 
+.NombreMaterias{
+  color: rgb(235, 235, 235);
+}
+
 .mostrandoMateria{
+  margin-top: 20px;
   width: 500px;
   height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
   border:2px solid black;
+  background-color:   #212F3D;
+  border-radius: 10px;
 }
 .formularioSeleccion{
+
   width: 600px;
   display: flex;
   align-items: center;
   flex-direction: column;
   color: white;
+  background-color:  rgb(52, 73, 94);
 }
 .pseleccion{
   margin-left: 15px;
@@ -524,6 +546,15 @@ color: white;
   width: 50px;
   height: 20px;
   cursor: pointer;
+  border-radius: 20px;
+}
+.divcheck{
+  width: 30px;
+  height: 30px;
+  background-color: #042e6b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
 }
 
@@ -544,7 +575,7 @@ color: white;
 .principalConfirm{
   margin-top: 20px;
   width: 300px;
-  height: 50px;
+  height: auto;
   background-color:  rgb(52, 73, 94);
   justify-content: center;
   align-items: center;
@@ -552,13 +583,20 @@ color: white;
 }
 
 .infoDeConfirm{
-  width: 400px;
+  width: 600px;
   height: auto;
-  background-color:  rgb(52, 73, 94);
+  background-color: rgb(52, 73, 94);
   border-radius: 20px;
-  margin-top: 30px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hdosinfo{
   color: white;
+}
+.ConfirmEleccion{
+  margin-bottom: 15px;
 }

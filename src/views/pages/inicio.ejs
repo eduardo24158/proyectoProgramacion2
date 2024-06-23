@@ -10,9 +10,6 @@
 <body>
 <%- include('../partials/header.ejs'); %>
 <div class="encabezados Centro">
-  <a href="/estudiante/session"><button class="btn-3">Iniciar sesión </button></a>
-  <a href="/estudiante/register"><button class="btn-3">Registro</button></a> 
-  <a href="/"><button class="btn-3">Inicio</button></a> 
 </div>
 </header>
   <main class="centro">
@@ -20,10 +17,36 @@
   <div class="bienvenido InicioDeElsistema">
   <h1>Bienvenido</h1>
   </div>
+<div class="contenedorDeCartas">
 
-  <div class="">
-
+  <div class="card">
+    <div class="personaje">
+      <div class="img-personaje">
+        <div class="detalles">
+          <h2>administrador</h2>
+          <p class="pDeCartas">
+            En esta seccion solo van a poder entrar administradores(estos fueron ingresaros antes a la base de datos)
+          </p>
+          <div class="buton"><a href="/administrador/InicioDeSesion"><button class="boton">ingresar</button></a></div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="card">
+    <div class="personaje">
+      <div class="img-personaje">
+        <div class="detalles">
+          <h2>estudiantes</h2>
+          <p class="pDeCartas">
+            En esta seccion va a poder iniciar sesion o registrarse los estudiantes 
+          </p>
+          <div class="buton"><a href="/estudiante/session"><button class="boton">ingresar</button></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </main>
 <%- include('../partials/footer.ejs'); %>

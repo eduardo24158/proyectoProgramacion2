@@ -15,25 +15,26 @@ create table estudiantes(
 
 create table materias(
 	id int auto_increment not null,
-    codigoMateria varchar(6) not null,
-    nameMateria varchar(100) not null,
-    creditoMateria int not null,
+    unidadCredito int not null,
+    materia varchar(100) not null,
+    codigoMateria varchar(10) not null,
+    votosMateria int default 0 not null,
+    carrera_id int not null,
+    semestre_id int not null,
     primary key(id)
 );
 
-create table inscripciones(
+create table ProcesoInscripcion(
 	id int auto_increment not null,
     estudiante_id int not null,
-    curso_id int not null,
-	unidadCreditoDisponible int not null,
-    fecha_inscripcion date not null,
+    periodo_id int not null,
     primary key(id)
 );
 
 create table asig_inscritos(
 	id int auto_increment not null,
     proceso_id int not null,
-    pensum_id int not null,
+    materias_id int not null,
     estudiante_id int not null,
     primary key(id)
 );
@@ -54,5 +55,19 @@ create table periodo(
 	id int auto_increment not null,
     nombrePeriodo varchar(8) not null,
     estatus varchar(20) not null,
+    primary key(id)
+);
+
+
+/* tabla administrador*/
+
+create table administrador(
+	id int auto_increment not null,
+    name varchar(50) not null,
+    lastname varchar(50) not null,
+    age int not null,
+    email varchar(100) not null,
+    cedula int not null,
+    password varchar(255) not null,
     primary key(id)
 );

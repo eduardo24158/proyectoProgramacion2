@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/style.css">
+  <title>Administrador</title>
+</head>
+<body>
+  <%- include('../../partials/header.ejs'); %>
+  <div class="encabezados Centro">
+  <a href="/"><button class="btn-3">Inicio</button></a> 
+  </div>
+</header>
+<main class="centro">
+    <div class="tituloDelRegistro">
+    <h1>Iniciar sesión</h1>
+    </div>
+    <div class=" inicideSesionAdmin">
+      <h1>Administrador</h1>
+      <form action="" method="post" class="formu">
+        <div class="username">
+          <input class="inpust" type="text" name="email" required />
+          <label class="labe">Correo</label>
+        </div>
+        <div class="username">
+          <input class="inpust" type="password" name="password" required />
+          <label class="labe">Contraseña</label>
+        </div>
+        <div class="formuAbajo">
+        <p class="pa">Estoy de acuerdo con <a href="/TerminosCondiciones" class="a">Termino y Condiciones</a></p>
+        <button type="submit" class="btn_1">Iniciar sesion</button>
+        </div>
+  </form>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text: '<%= alertMessage %>',
+          icon: '<%= alertIcon %>',
+          showConfirmButtom: '<%= showConfirmButtom %>',
+          timer: '<%= timer %>'
+        }).then(() => {
+          window.location = '/<%= ruta %>';
+        })
+      </script>
+      <% } %>
+  <%- include('../../partials/footer.ejs'); %>
+</body>
+</html>

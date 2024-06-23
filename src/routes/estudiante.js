@@ -7,10 +7,16 @@ router.get('/', (req, res) => {
       login: true,
       name: req.session.name
     });
+  }else if (req.session.Adminloggedin == true) {
+    res.render('pages/administrador/administradorHome', {
+      login: true,
+      AdminName: req.session.adminName
+    });
   }else{
     res.render('pages/inicio');
   }
 });
+
 
 router.get('/TerminosCondiciones', (req, res) => {
   res.render('pages/terminos');

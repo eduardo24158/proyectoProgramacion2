@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('../../partials/header.ejs'); %>
+  <div class="encabezados Centro">
+    <h1 class="tituloUsuario"><%= AdminName %></h1> 
+    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+  </div>
+  </header>
+  <main class="centro">
+  
+    <div class="card">
+      <div class="personaje_2">
+        <div class="img-personaje_2">
+          <div class="detalles_2">
+            <h2>tus datos</h2>
+            <p>
+            aqui puedes ver tus datos
+            </p>
+            <div class="buton"><a href="/administrador/datos"><button class="boton">ingresar</button></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <%- include('../../partials/footer.ejs'); %>
+</body>
+</html>
