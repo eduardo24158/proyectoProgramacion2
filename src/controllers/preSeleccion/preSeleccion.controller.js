@@ -56,7 +56,7 @@ const postseleccion=(req,res)=>{
       }else{
         let voto=1;
         for (let i = 0; i < arregloNombre.length; i++) {
-          const query = "UPDATE materias SET unidadCredito = unidadCredito + ? WHERE materia = ?"
+          const query = "UPDATE materias SET  votosMaterias =votosMaterias+ ? WHERE nameMateria = ?"
           connection.query(query, [voto, arregloNombre[i]], async (error, result)=>{
             if(error){
               console.error('Error updating the record:', error); 
@@ -72,10 +72,6 @@ const postseleccion=(req,res)=>{
         });
       }
 }
-
-
-
-
 
 const getPeriodo = (req, res) => {
     if (req.session.loggedin == true) {
