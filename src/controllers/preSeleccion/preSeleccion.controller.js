@@ -13,7 +13,8 @@ const getPre = (req, res) => {
 
 const getseleccion = (req, res) => {
     if(req.session.loggedin == true){
-      connection.query('SELECT * FROM materias',(error,result)=>{
+      const query='SELECT materias.nameMateria,materias.creditoMateria,semestre.nombreSemestre FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
+      connection.query(query,(error,result)=>{
         if(error){
           console.log(error);
         }
