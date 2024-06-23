@@ -25,11 +25,14 @@
     <p><%= men %></p>
     <p><a class="botonLink" href="/estudiante/preEleccion/seleccion">Presiona aquí</a> para volver a intentarlo</p>
   <% } %>
-  <% for (const i in arreglo) { %>
+  <% for (let i = 0; i < arreglo.length; i++) { %>
+    <% if(arreglo[i].id == arreglo[i].semestre_id) { %>
     <div class="mostrandoMateria">
       <div class="divcheck"><input type="checkbox" class="check" name="<%=arreglo[i].nameMateria %>" value="<%= arreglo[i].creditoMateria %>"></div><h2 class="NombreMaterias"><%= arreglo[i].nombreSemestre %> : <%= arreglo[i].nameMateria %></h2>
     </div>
-  <% } %>
+    <%}%>
+
+  <%}%>
     <button class="btn_1" type="submit">confirmar</button>
 </form>
 </div>
