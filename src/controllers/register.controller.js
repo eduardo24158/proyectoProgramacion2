@@ -10,7 +10,7 @@ const getRegister = (req, res) => {
     }else{
         res.render('pages/estudiante/register', {
             error: false
-        });
+        })
     }
 };
 
@@ -23,11 +23,13 @@ const postRegisterStudent = async (req, res) => {
     const password = req.body.password;
 
     if ((parseInt(cedula) < 1000000) || (parseInt(cedula) > 40000000)) {
+        req.session.error = true;
+        req.session.message = 'La cédula no es válida';
         return res.render('pages/estudiante/register', {
-            error: true,
-            mensajeError: 'La cédula no es válida.'
+            error: req.session.error,
+            message: req.session.message
         });
-    }
+    };
 
     let encryp = await bcrypt.hash(password, 8);
 
