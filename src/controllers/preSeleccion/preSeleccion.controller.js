@@ -172,8 +172,8 @@ const postSemestreEleccion=(req,res)=>{
     console.log(result);
     const materias=result;
     console.log(materias)
-    const datos = Object.entries(data);
-    
+    const datos = Object.entries(materias);
+    console.log(datos)
     res.render('pages/principalHome/seleccion',{
       materias:result,
       ud:9,

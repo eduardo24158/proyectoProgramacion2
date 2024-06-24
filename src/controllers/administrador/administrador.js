@@ -55,15 +55,14 @@ const postSession = async (req, res) => {
 }
 }
 const getHome= (req,res)=>{
-  if (req.session.Adminloggedin  == true) {
+
     res.render('pages/administrador/administradorHome', {
       login: true,
       AdminName: req.session.adminName
     });
-  }else{
-    res.redirect('/administrador/home');
   }
-}
+
+
 
 module.exports = {
   getInicioDeSesion,

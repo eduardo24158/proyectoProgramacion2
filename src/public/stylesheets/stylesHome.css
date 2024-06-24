@@ -712,3 +712,147 @@ color: white;
   border-radius: 20px;
   border: 2px solid #061599;
 }
+/*estilos Opciones*/
+
+.centroOpciones{
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(2, 15, 32);
+  gap: 20px;
+}
+
+.contenedorOpciones{
+  width: 50%;
+  height: 300px;
+  background-color: rgb(52, 73, 94);
+  box-shadow: 16px 14px 20px #0000008c;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 30px;
+}
+
+.opciones{
+  width: 500px;
+  border: 2px solid #08169c;
+  border-radius: 30px;
+  background-color: #242323;
+}
+
+.OP{
+  width: 50%;
+  height: 400px;
+}
+
+.formuAbajo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+
+.botones {
+  width: 200px;
+  height: 50px;
+  color: white;
+  background-color: rgb(8, 8, 197);
+  cursor: pointer;
+  transition: 0.5s ease;
+  border: none;
+  border-radius: 10px;
+}
+
+.botones:hover {
+  background-color: rgb(8, 8, 139);
+}
+
+.pa {
+  margin: 5px;
+  
+}
+
+.formulario{
+  background-color: rgb(52, 73, 94);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 500px;
+  height: 700px;
+  border-radius: 10px;
+  color: rgb(245, 245, 245);
+  box-shadow: 16px 14px 20px #0000008c;
+}
+
+.formulario h1{
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid silver;
+}
+
+
+.formu .username{
+  position: relative;
+  border-bottom: 2px solid rgb(5, 7, 143);
+  margin: 30px 0;
+}
+
+
+.username .inpust{
+
+  width: 97%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background-color: #0e0d0d;
+  outline: none;
+  color: white;
+}
+
+.username .labe{
+
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-70%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+
+
+
+
+.username .inpust:focus ~.labe{
+  top: -5px;
+  color:  rgb(255, 255, 255);
+  transition: .5s;
+}
+
+.selecte{
+  width: 100%;
+  height: 40px;
+  background-color: #0e0d0d;
+  color:  #adadad;
+  border: none;
+  border-bottom: 2px solid rgb(5, 7, 143);
+}
+
+.a {
+  color: rgb(6, 6, 58);
+}
+
+.ContenedorEliminar{
+  width: 500px;
+  height: 400px;
+}
