@@ -13,44 +13,49 @@ const getPre = (req, res) => {
 
 const getseleccion = (req, res) => {
     if(req.session.loggedin == true){
-      if(req.session.close == true) {
-        res.send('No papa');
-      }else{
-        const query='SELECT materias.materia, materias.unidadCredito, semestre.nombreSemestre, materias.codigoMateria, semestre.id,materias.semestre_id FROM materias join semestre on(materias.semestre_id = semestre.id);'
-        connection.query(query, async (error,result)=>{
-          if(error){
+
+
+        connection.query('SELECT p.id, m.id, e.id FROM asig_inscritos a JOIN materias m ON(a.materias_id = m.id) JOIN estudiantes e ON(a.estudiante_id = e.id) JOIN ProcesoInscripcion p ON(a.proceso_id = p.id);', async (error, resu) => {
+          if (error) {
             console.log(error);
           }
-          
-          if (result.length > 0) {
-            await res.render('pages/principalHome/seleccion',{
-              arreglo: result,
-              ud:9,
-              status: false,
-            });
+
+          if (resu.length > 0) {
+            res.send('No papa, ya estás inscrito');
           }else{
-            res.send('Error: No se encontraron las materias...');
+            const query='SELECT materias.materia, materias.unidadCredito, semestre.nombreSemestre, materias.codigoMateria, semestre.id,materias.semestre_id FROM materias join semestre on(materias.semestre_id = semestre.id);'
+            connection.query(query, async (error,result)=>{
+              if(error){
+                console.log(error);
+              }
+
+              if (result.length > 0) {
+                await res.render('pages/principalHome/seleccion',{
+                  arreglo: result,
+                  ud:9,
+                  status: false,
+                });
+              }else{
+                res.send('Error: No se encontraron las materias...');
+              }
+            });
           }
-        });
-      }
+        }); 
     }else{
       res.redirect('/');
     }
   };
 
 const postseleccion=(req,res)=>{
-  console.log(req.body);
     const data = req.body;
     let arregloNombre = [];
     let udc = 21;
-    let count = 0;
     const datos = Object.entries(data);
-    req.session.close = false;
 
     datos.forEach(([contenido, value]) => {
         udc -= value;
 
-        if(udc > 12){
+        if(udc >= 12){
           arregloNombre.push(contenido);
         }
     });
@@ -61,7 +66,6 @@ const postseleccion=(req,res)=>{
           status: true,
           men: 'Te estás SobrePasando de Unidades de Crédito',
           arreglo: false,
-          close: false
         });
       }else{
         let voto=1;
@@ -74,18 +78,35 @@ const postseleccion=(req,res)=>{
           });
           console.log('se han guardado los datos');
         }
-        if (count == 0) {
-          console.log(arregloNombre);
-          req.session.close = true;
-          res.render('pages/principalHome/ConfirmEleccion',{
-            nombre: arregloNombre,
-            close: false
-          });
-          count += 1;
-        }else{
-          req.session.close = true;
-        }
-        
+
+        connection.query('SELECT id, estudiante_id FROM ProcesoInscripcion', async (error, result) => {
+          if (error) {
+            console.log(error);
+          }
+
+          if (result.length > 0) {
+            connection.query('SELECT id FROM materias', async (error, resulta) => {
+              if (error) {
+                console.log(error);
+              }
+
+              if (resulta.length > 0) {
+                connection.query('INSERT INTO asig_inscritos(proceso_id, materias_id, estudiante_id) VALUES(?, ?, ?)', [result[0].id, result[0].estudiante_id, resulta[0].id], async (error) => {
+                  if (error) {
+                    console-log(error);
+                  }
+                });
+              }
+            });
+          }
+        });
+
+        console.log(arregloNombre);
+        req.session.close = true;
+        res.render('pages/principalHome/ConfirmEleccion',{
+          nombre: arregloNombre,
+          close: false
+        });
       }
 }
 
@@ -102,23 +123,40 @@ const getPeriodo = (req, res) => {
 
 const postPeriodo = async (req, res) => {
     const semestre = req.body.select;
-    connection.query('SELECT nombrePeriodo FROM periodo WHERE estatus = ?', [semestre], async(error, result) => {
-        console.log(result[0].nombrePeriodo)
-        if (error) {
-            console.log(error);
-        }
-        if (result[0].nombrePeriodo === '2025-1') {
-            res.render('pages/principalHome/periodoEstu', {
-                proceso: false,
-                estatus: 'Este semestre por ahora está inactivo'
+
+    connection.query('SELECT id FROM estudiantes', async (error, resulta) => {
+      if (error) {
+        console.log(error);
+      }
+
+      if (resulta.length > 0) {
+        connection.query('SELECT nombrePeriodo, id FROM periodo WHERE estatus = ?', [semestre], async(error, result) => {
+          console.log(result[0].nombrePeriodo)
+          if (error) {
+              console.log(error);
+          }
+          if (result[0].nombrePeriodo === '2025-1') {
+              res.render('pages/principalHome/periodoEstu', {
+                  proceso: false,
+                  estatus: 'Este semestre por ahora está inactivo'
+              });
+          }else if(result[0].nombrePeriodo === '2024-2'){
+            connection.query('INSERT INTO ProcesoInscripcion(estudiante_id, periodo_id) VALUES(?, ?)', [resulta[0].id, result[0].id], async (error) => {
+              if (error) {
+                console.log(error);
+              }
             });
-        }else if(result[0].nombrePeriodo === '2024-2'){
-            res.render('pages/principalHome/periodoEstu', {
-                proceso: true,
-                estatus: 'Procedamos'
-            });
-        }
+
+              res.render('pages/principalHome/periodoEstu', {
+                  proceso: true,
+                  estatus: 'Procedamos'
+              });
+          }
+      });
+      }
     });
+
+    
 }
 
 
@@ -127,24 +165,30 @@ const getPreResultados=(req,res)=>{
 }
 
 const postPreResultados= (req,res)=>{
-console.log(req.body)
-  const dato=req.body.semestre
-const query='SELECT materias.Materia,materias.unidadCredito,VotosMateria FROM materias where semestre_id= ?;';
-connection.query(query,[dato],(error,result)=>{
-  const Materias=result;
-  console.log(Materias)
-  res.render('pages/principalHome/ResultadosPreEleccion',{Materias})
-})
+  console.log(req.body);
+  const dato = req.body.semestre;
+  const query='SELECT materias.Materia,materias.unidadCredito,VotosMateria FROM materias where semestre_id= ?;';
+  connection.query(query,[dato],(error,result)=>{
+    const Materias = result;
+    console.log(Materias);
+    res.render('pages/principalHome/resultadosPreEleccion', {Materias});
+  });
 }
 
 const getResultados=(req,res)=>{
-  const query='SELECT semestre.nombreSemestre,materias.Materia,materias.votosMateria FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
+  const query='SELECT semestre.nombreSemestre,materias.Materia,materias.votosMateria FROM materias join semestre on(materias.semestre_id=semestre.id);';
   connection.query(query,(error,result)=>{
-    console.log(result)
-    res.render('pages/principalHome/resultadosPreEleccion',{
-    arreglo:result
-  })
-  })
+    if (error) {
+      console.log(error);
+    }
+
+    if (result.length > 0) {
+      console.log(result);
+      res.render('pages/principalHome/resultadosPreEleccion',{
+        arreglo: result
+      });
+    }
+  });
 }
 
 module.exports = {
