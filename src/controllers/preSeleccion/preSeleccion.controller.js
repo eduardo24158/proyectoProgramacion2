@@ -12,6 +12,7 @@ const getPre = (req, res) => {
 }
 
 const getseleccion = (req, res) => {
+  console.log(req.body);
     if(req.session.loggedin == true){
       if(req.session.close == true) {
         res.send('No papa');
@@ -39,7 +40,6 @@ const getseleccion = (req, res) => {
   };
 
 const postseleccion=(req,res)=>{
-  console.log(req.body);
     const data = req.body;
     let arregloNombre = [];
     let udc = 21;
@@ -122,6 +122,27 @@ const postPeriodo = async (req, res) => {
 }
 
 
+const getSemestreEleccion=(req,res)=>{
+  res.render('pages/principalHome/SemestreSeleccion')
+
+}
+const postSemestreEleccion=(req,res)=>{
+  const DatoSemestre= req.body.semestre;
+  const query='SELECT materias.Materia,materias.unidadCredito,codigoMateria FROM materias where semestre_id= ?;';
+  connection.query(query,[DatoSemestre],(error,result)=>{
+    console.log(result);
+    const materias=result;
+    console.log(materias)
+    const datos = Object.entries(data);
+    
+    res.render('pages/principalHome/seleccion',{
+      materias:result,
+      ud:9,
+      status: false
+    })
+  
+  })
+}
 const getPreResultados=(req,res)=>{
   res.render('pages/principalHome/PreResultados')
 }
@@ -153,6 +174,8 @@ module.exports = {
     postPeriodo,
     getseleccion,
     postseleccion,
+    getSemestreEleccion,
+    postSemestreEleccion,
     getResultados,
     getPreResultados,
     postPreResultados
