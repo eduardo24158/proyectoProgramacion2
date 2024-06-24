@@ -129,15 +129,16 @@ const getPreResultados=(req,res)=>{
 const postPreResultados= (req,res)=>{
 console.log(req.body)
   const dato=req.body.semestre
-const query='SELECT materias.nameMateria,materias.creditoMateria,VotosMaterias FROM materias where semestre_id= ?';
+const query='SELECT materias.Materia,materias.unidadCredito,VotosMateria FROM materias where semestre_id= ?;';
 connection.query(query,[dato],(error,result)=>{
   const Materias=result;
+  console.log(Materias)
   res.render('pages/principalHome/ResultadosPreEleccion',{Materias})
 })
 }
 
 const getResultados=(req,res)=>{
-  const query='SELECT semestre.nombreSemestre,materias.nameMateria,materias.votosMaterias FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
+  const query='SELECT semestre.nombreSemestre,materias.Materia,materias.votosMateria FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
   connection.query(query,(error,result)=>{
     console.log(result)
     res.render('pages/principalHome/resultadosPreEleccion',{
