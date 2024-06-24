@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+      <a href="/"><button class="btn-3">volver al home</button></a> 
+    </div>
+  </header>
+  <main class="centroPreResultados">
+    <div class="InformacionDelCentro">
+      <h3 class="tituloDePreResultado">selecciona el semestre de las materias que quieres ver los resultados que quieres ver </h3>
+    <form action="/estudiante/preEleccion/preResultado" method="post" class="formPreResultado">
+      <select name="semestre" class="seleccionDePreResultados">
+        <option selected disabled>selecciona el semestre</option>
+        <option value="1">semestre 1</option>
+        <option value="2">semestre 2</option>
+        <option value="3">semestre 3</option>
+        <option value="4">semestre 4</option>
+        <option value="5">semestre 5</option>
+        <option value="6">semestre 6</option>
+        <option value="7">semestre 7</option>
+        <option value="8">semestre 8</option>
+        <option value="9">semestre 9</option>
+        <option value="10">semestre 10</option>
+      </select>
+    <button class="btn_1" type="submit">continuar</button>
+    </form>
+    </div>
+  </main>
+  <%- include('../../partials/footer.ejs'); %>
+</body>
+</html>

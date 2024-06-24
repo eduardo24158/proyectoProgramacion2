@@ -106,9 +106,29 @@ const postPeriodo = async (req, res) => {
     });
 }
 
+
+const getPreResultados=(req,res)=>{
+  res.render('pages/principalHome/PreResultados')
+}
+
+const postPreResultados= (req,res)=>{
+console.log(req.body)
+  const dato=req.body.semestre
+const query='SELECT materias.nameMateria,materias.creditoMateria,VotosMaterias FROM materias where semestre_id= ?';
+connection.query(query,[dato],(error,result)=>{
+  const Materias=result;
+  res.render('pages/principalHome/ResultadosPreEleccion',{Materias})
+})
+}
+
 const getResultados=(req,res)=>{
-  const query='SELECT materias.nameMateria,materias.creditoMateria,semestre.nombreSemestre,semestre.id,materias.semestre_id  FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
-  res.render('pages/principalHome/resultadosPreEleccion')
+  const query='SELECT semestre.nombreSemestre,materias.nameMateria,materias.votosMaterias FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
+  connection.query(query,(error,result)=>{
+    console.log(result)
+    res.render('pages/principalHome/resultadosPreEleccion',{
+    arreglo:result
+  })
+  })
 }
 
 module.exports = {
@@ -117,7 +137,9 @@ module.exports = {
     postPeriodo,
     getseleccion,
     postseleccion,
-    getResultados
+    getResultados,
+    getPreResultados,
+    postPreResultados
 }
 
 /*

@@ -18,6 +18,9 @@
       <h1>los resultados </h1>
       </div>
       <div class="resultadosDePreEleccion">
+        <% for (let i = 0; i < Materias.length; i++) { %>
+        <h2 class="materiasEstilos"> <%=Materias[i].nameMateria %> : <%=Materias[i].VotosMaterias%> </>
+      <%}%>
       </div>
   </main>
 <%- include('../../partials/footer.ejs'); %>
