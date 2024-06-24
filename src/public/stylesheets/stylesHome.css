@@ -919,3 +919,17 @@ align-items: center;
   flex-direction: column;
   gap: 0;
 }
+
+/* estilos de confirmacion de voto*/
+
+.Yavoto{
+  width: 500px;
+  height: 300px;
+  background-color: rgb(52, 73, 94);
+  border-radius: 20px;
+  box-shadow: 16px 14px 20px #0000008c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

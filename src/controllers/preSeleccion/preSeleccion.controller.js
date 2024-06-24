@@ -14,12 +14,13 @@ const getPre = (req, res) => {
 const getPeriodo = (req, res) => {
   if (req.session.loggedin == true) {
     connection.query('SELECT * FROM asig_inscritos a JOIN ProcesoInscripcion p ON(a.proceso_id = p.id)', async (error, result) => {
+      console.log(result)
       if (error) {
         console.log(error);
       }
 
       if (result.length > 0) {
-        res.send('No papa, usted ya está inscrito...');
+        res.render('pages/principalHome/yaVoto');
       }else{
         res.render('pages/principalHome/periodoEstu', {
           proceso: false,
@@ -37,6 +38,7 @@ const postPeriodo = async (req, res) => {
 
     connection.query('SELECT nombrePeriodo, id FROM periodo WHERE estatus = ?', [semestre], async(error, result) => {
       console.log(result[0].nombrePeriodo)
+      console.log(result)
       if (error) {
           console.log(error);
       }
@@ -63,6 +65,7 @@ const postSemestreEleccion = (req, res) => {
   const DatoSemestre = req.body.semestre;
   const query = 'SELECT m.materia, m.unidadCredito, m.codigoMateria, m.semestre_id FROM materias m WHERE semestre_id = ?;';
   connection.query(query, [DatoSemestre], (error, result)=>{
+    console.log(result)
     if (error) {
       console.log(error);
     }
@@ -75,6 +78,7 @@ const postSemestreEleccion = (req, res) => {
       req.session.semestre = result[0].semestre_id;
       req.session.materias = result;
       connection.query('INSERT INTO ProcesoInscripcion(estudiante_id, periodo_id, semestre_id) VALUES(?, ?, ?);', [req.session.estudianteID, req.session.periodoID, req.session.semestre], async (error) => {
+        console.log(result)
         if (error) {
           console.log(error);
         }
@@ -95,6 +99,7 @@ const getseleccion = (req, res) => {
   console.log(req.body);
     if(req.session.loggedin == true){
           const query='SELECT materias.materia, materias.unidadCredito, semestre.nombreSemestre, materias.codigoMateria, semestre.id,materias.semestre_id FROM materias join semestre on(materias.semestre_id = semestre.id);'
+          console.log(result)
           connection.query(query, async (error,result)=>{
             if(error){
               console.log(error);
@@ -142,6 +147,7 @@ const postseleccion=(req,res)=>{
         for (let i = 0; i < arregloNombre.length; i++) {
           const query = "UPDATE materias SET  votosMateria = votosMateria + ? WHERE materia = ?"
           connection.query(query, [voto, arregloNombre[i]], async (error, result)=>{
+            console.log(result)
             if(error){
               console.error('Error updating the record:', error); 
             }
@@ -150,20 +156,23 @@ const postseleccion=(req,res)=>{
         }
 
         connection.query('SELECT id, estudiante_id FROM ProcesoInscripcion', async (error, result) => {
+          console.log(result)
           if (error) {
             console.log(error);
           }
 
           if (result.length > 0) {
             connection.query('SELECT id FROM materias', async (error, resulta) => {
+              console.log(result)
               if (error) {
                 console.log(error);
               }
 
               if (resulta.length > 0) {
                 connection.query('INSERT INTO asig_inscritos(proceso_id, materias_id, estudiante_id) VALUES(?, ?, ?)', [result[0].id, result[0].estudiante_id, resulta[0].id], async (error) => {
+                  console.log(result)
                   if (error) {
-                    console-log(error);
+                    console.log(error);
                   }
                 });
               }
