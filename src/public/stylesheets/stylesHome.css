@@ -323,6 +323,13 @@ border-bottom-right-radius:20px ;
   transform: skew(20deg,0deg) scale(1.1);
 }
 
+.Btn-Delete:hover::before{
+  background-color: #8b0505;
+  border: 3px solid #ff1111;
+}
+
+
+
 .btn_1{
   width: 200px;
   height: 50px;
@@ -369,8 +376,28 @@ cursor: pointer;
   transform: translate(10px,10px);
 }
 
+.botonEliminar::after,.btn_1::before{
+  background: #c00707;
+  border: 2px solid #720808;
+}
+.botonEliminar:hover::before{
+  background: #c00707;
+  border: 2px solid #720808;
+}
 
-
+.botonEliminar:hover{
+  background: #c00707;
+  border: 2px solid #720808;
+  color: black;
+}
+.botonEliminar:hover::after{
+  background: #c00707;
+  border: 2px solid #720808;
+}
+.botonEliminar:hover::after{
+  background: #c00707;
+  border: 2px solid #720808;
+}
 
 /*estilos de datos*/
 
@@ -483,6 +510,7 @@ color: white;
 
 
 /*estilos de la seleccion*/
+
 .bodyDeSeleccion{
   display: flex;
   flex-direction: column;
@@ -855,4 +883,39 @@ color: white;
 .ContenedorEliminar{
   width: 500px;
   height: 400px;
+}
+
+/* estilos del eliminar cuenta */
+
+.Centroeliminacion{
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: rgb(2, 15, 32);
+  gap: 20px;
+}
+
+.InfoEliminarCuenta{
+  color: white;
+  text-align: center;
+  justify-content: center;
+  width: 50%;
+  height: 400px;
+  background-color:  rgb(52, 73, 94);
+  border-radius: 20px;
+  box-shadow: 16px 14px 20px #0000008c;
+}
+.elimi{
+  width: 450px;
+}
+
+.formuelimi{
+  display: flex;
+justify-content: center;
+align-items: center;
+  flex-direction: column;
+  gap: 0;
 }

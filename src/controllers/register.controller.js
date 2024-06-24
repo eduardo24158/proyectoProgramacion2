@@ -50,7 +50,7 @@ const postRegisterStudent = async (req, res) => {
                 alertIcon: "error",
                 showConfirmButtom: false,
                 timer: 2000,
-                ruta: '/estudiante/session'
+                ruta: '/estudiante/register'
             });
         }else{
             connection.query('INSERT INTO estudiantes SET ?', {name:name, lastname:lastname, age:age, email:email, cedula:cedula, password:encryp}, async(error, result) => {

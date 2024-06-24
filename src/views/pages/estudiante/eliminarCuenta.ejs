@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <a href="/estudiante/home"><button class="btn-3">volver al home</button></a> 
+    </div>
+    </header>
+<main class="Centroeliminacion">
+  <div class="tituloDatos">
+    <h1>eliminacion de cuenta</h1>
+  </div>
+  <div class="InfoEliminarCuenta">
+    <h1>estas seguro de eliminar tu cuenta?</h1>
+    <h2>(ingresa el correo para confirmar )</h2>
+    <form action="/estudiante/home/eliminarCuenta" method="post" class="formu formuelimi">
+      <div class="username elimi">
+        <input class="inpust" type="text" name="email" required />
+        <label class="labe">Correo</label>
+      </div>
+      <div class="formuAbajo">
+      <button type="submit" class="btn_1 botonEliminar">eliminar cuenta</button>
+      </div>
+</form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(typeof alert != "undefined") { %>
+  <script>
+    Swal.fire({
+      title: "<%= alertTitle %>",
+      text: "<%= alertMessage %>",
+      icon: "<%= alertIcon %>",
+      showConfirmButtom: "<%= showConfirmButtom %>",
+      timer: "<%= timer %>",
+    }).then(() => {
+      window.location = "/<%= ruta %>";
+    });
+  </script>
+  <% } %> 
+</main>
+<%- include('../../partials/footer.ejs'); %>
+</body>
+</html>
