@@ -13,28 +13,37 @@ const getPre = (req, res) => {
 
 const getseleccion = (req, res) => {
     if(req.session.loggedin == true){
-      const query='SELECT materias.nameMateria,materias.creditoMateria,semestre.nombreSemestre,semestre.id,materias.semestre_id  FROM materias join semestre on(materias.semestre_id=semestre.id) ;'
-      connection.query(query,(error,result)=>{
-        if(error){
-          console.log(error);
-        }
-        
-        res.render('pages/principalHome/seleccion',{
-          arreglo: result,
-          ud:9,
-          status: false,
-          close: false
+      if(req.session.close == true) {
+        res.send('No papa');
+      }else{
+        const query='SELECT materias.materia, materias.unidadCredito, semestre.nombreSemestre, materias.codigoMateria, semestre.id,materias.semestre_id FROM materias join semestre on(materias.semestre_id = semestre.id);'
+        connection.query(query, async (error,result)=>{
+          if(error){
+            console.log(error);
+          }
+          
+          if (result.length > 0) {
+            await res.render('pages/principalHome/seleccion',{
+              arreglo: result,
+              ud:9,
+              status: false,
+            });
+          }else{
+            res.send('Error: No se encontraron las materias...');
+          }
         });
-      });
+      }
     }else{
       res.redirect('/');
     }
   };
 
 const postseleccion=(req,res)=>{
+  console.log(req.body);
     const data = req.body;
     let arregloNombre = [];
     let udc = 21;
+    let count = 0;
     const datos = Object.entries(data);
     req.session.close = false;
 
@@ -57,7 +66,7 @@ const postseleccion=(req,res)=>{
       }else{
         let voto=1;
         for (let i = 0; i < arregloNombre.length; i++) {
-          const query = "UPDATE materias SET  votosMaterias =votosMaterias+ ? WHERE nameMateria = ?"
+          const query = "UPDATE materias SET  votosMateria = votosMateria + ? WHERE materia = ?"
           connection.query(query, [voto, arregloNombre[i]], async (error, result)=>{
             if(error){
               console.error('Error updating the record:', error); 
@@ -65,12 +74,18 @@ const postseleccion=(req,res)=>{
           });
           console.log('se han guardado los datos');
         }
-        console.log(arregloNombre);
-        req.session.close = true;
-        res.render('pages/principalHome/ConfirmEleccion',{
-          nombre: arregloNombre,
-          close: req.session.close
-        });
+        if (count == 0) {
+          console.log(arregloNombre);
+          req.session.close = true;
+          res.render('pages/principalHome/ConfirmEleccion',{
+            nombre: arregloNombre,
+            close: false
+          });
+          count += 1;
+        }else{
+          req.session.close = true;
+        }
+        
       }
 }
 

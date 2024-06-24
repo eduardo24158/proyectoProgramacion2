@@ -13,23 +13,19 @@
     <a href="/"><button class="btn-3">volver al home</button></a> 
   </div>
 </header>
-<% if (close) { %>
-  <p>Se cerró el proceso de inscripción</p>
-<% } else { %>
   <main class="centroConfimacion ">
     <div class="principalConfirm">
   <h1 class="tituloConfi">has votado por:</h1>
     </div>
     <div class="infoDeConfirm">
     <%for (let i = 0; i < nombre.length; i++) {%>
-    <div class="mostrandoMateria ConfirmEleccion">
-      <h2 class="hdosinfo"><%=nombre[i] %></h2>
+      <div class="mostrandoMateria ConfirmEleccion">
+        <h2 class="hdosinfo"><%= nombre[i] %></h2>
+      </div>
+    <%}%>
     </div>
-  <%}%>
-    </div>
-    <a href="/"><button class="btn_1"> regresar al home</button></a>
+    <a href="/estudiante/home"><button class="btn_1">Regresar al home</button></a>
   </main>
-  <% } %>
   <%- include('../../partials/footer.ejs'); %>
 </body>
 </html>

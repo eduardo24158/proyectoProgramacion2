@@ -4,15 +4,15 @@ const { connection } = require('../db');
 const getRegister = (req, res) => {
     if (req.session.loggedin == true) {
         res.render('pages/estudiante/home', {
-        login: true,
-        name: req.session.name
+            login: true,
+            name: req.session.name
         });
-        }else if (req.session.Adminloggedin == true) {
+    }else if (req.session.Adminloggedin == true) {
         res.render('pages/administrador/administradorHome', {
-        login: true,
-        AdminName: req.session.adminName
+            login: true,
+            AdminName: req.session.adminName
         });
-        }else{
+    }else{
         res.render('pages/estudiante/register', {
             error: false
         })
@@ -57,6 +57,12 @@ const postRegisterStudent = async (req, res) => {
                 if (error) {
                     console.log(error);
                 }else{
+                    req.session.name = name;
+                    req.session.lastname =lastname;
+                    req.session.age=age;
+                    req.session.email= email;
+                    req.session.cedula= cedula;
+                    req.session.loggedin = true;
                     res.render('pages/estudiante/register', {
                         error: false,
                         alert: true,
