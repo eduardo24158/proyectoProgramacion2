@@ -34,6 +34,7 @@ const postSession = async (req, res) => {
                     ruta: 'estudiante/session'
                 });
             }else{
+                req.session.estudianteID = result[0].id;
                 req.session.name = result[0].name;
                 req.session.lastname =result[0].lastname;
                 req.session.age=result[0].age;
