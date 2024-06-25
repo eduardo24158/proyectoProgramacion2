@@ -3,7 +3,7 @@ const mysql = require('mysql'); //Se indica Promise para que Node tome cada cone
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: 'Alejenial2106.',
     port: 3306,
     database: 'preSeleccionCursos'
 });

@@ -4,40 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
-  <title>Document</title>
+  <title>Datos Administrador</title>
 </head>
-<body>
-  <%- include('../../partials/header.ejs'); %>
-    <div class="encabezados Centro">
-      <h1 class="tituloUsuario"><%= AdminName %></h1> 
-      <a href="/administrador/home"><button class="btn-3">volver al home</button></a> 
-    </div>
-    </header>
+  <body>
+    <%- include('../../partials/header.ejs'); %>
+      <div class="encabezados Centro">
+        <h1 class="tituloUsuario"><%= AdminName %></h1> 
+        <a href="/administrador/home"><button class="btn-3">Volver al Home</button></a> 
+      </div>
+      </header>
     <main  class="CentroDeAdmin">
       <div class="tituloDatos">
-        <h1>datos </h1>
-        </div>
-        <div class="informacionDeDatos">
-  
-    <table class="tabla" border="1">
-    <tr>
-      <td class="fila">Nombre</td>
-      <td class="fila">Apellido</td>
-      <td class="fila">Edad</td>
-      <td class="fila">Cedula</td>
-      <td class="fila">Correo</td>
-    </tr>
-    <tr class="fila">
-      <td class="fila"><%=AdminName%></td>
-      <td class="fila"><%=Adminlastname%></td>
-      <td class="fila"><%=Adminage%></td>
-      <td class="fila"><%=Admincedula%></td>
-      <td class="fila"><%=Adminemail%></td>
-    </tr>
-  </table>
-  
-        </div>
+        <h1>Datos </h1>
+      </div>
+      
+      <div class="informacionDeDatos">
+        <table class="tabla" border="1">
+          <tr>
+            <td class="fila">Nombre</td>
+            <td class="fila">Apellido</td>
+            <td class="fila">Edad</td>
+            <td class="fila">Cedula</td>
+            <td class="fila">Correo</td>
+          </tr>
+          <tr class="fila">
+            <td class="fila"><%=AdminName%></td>
+            <td class="fila"><%=Adminlastname%></td>
+            <td class="fila"><%=Adminage%></td>
+            <td class="fila"><%=Admincedula%></td>
+            <td class="fila"><%=Adminemail%></td>
+          </tr>
+        </table>
+      </div>
     </main>
-  <%- include('../../partials/footer.ejs'); %>
-</body>
+<%- include('../../partials/footer.ejs'); %>
+  </body>
 </html>
