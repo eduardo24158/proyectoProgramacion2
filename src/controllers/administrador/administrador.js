@@ -20,8 +20,13 @@ const getInicioDeSesion= (req,res)=>{
 const postSession = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  if (email&& password) {
+
+  if (email && password) {
     connection.query('SELECT * FROM administrador WHERE email = ?', [email], async(error, result)=>{
+      if(error) {
+        console.log(error);
+      }
+
       if (result.length == 0 || password !== result[0].password) { 
         res.render('pages/administrador/inicioDeAdmin', {
           alert: true,
@@ -31,7 +36,8 @@ const postSession = async (req, res) => {
           showConfirmButtom: true,
           timer: 2000,
           ruta: 'administrador/InicioDeSesion'
-        });}else{
+        });
+      }else{
         req.session.adminName = result[0].name;
         req.session.Adminlastname =result[0].lastname;
         req.session.Adminage=result[0].age;
@@ -46,19 +52,21 @@ const postSession = async (req, res) => {
           showConfirmButtom: false,
           timer: 2000,
           ruta: 'administrador/home'
-        })}
-      })}else{
-  res.render('pages/estudiante/inicioDeSesion', {
-    alert: true,
-    alertTitle: 'Advertencia D:',
-    alertMessage: "Por Favor, ingresa el Correo y la Contraseña :)",
-    alertIcon: "warning",
-    showConfirmButtom: true,
-    timer: 20000,
-    ruta: 'administrador/InicioDeSesion'
-  })
-}
-}
+        });
+      };
+    });
+  }else{
+    res.render('pages/estudiante/inicioDeSesion', {
+      alert: true,
+      alertTitle: 'Advertencia D:',
+      alertMessage: "Por Favor, ingrese todos los campos...",
+      alertIcon: "warning",
+      showConfirmButtom: true,
+      timer: 20000,
+      ruta: 'administrador/InicioDeSesion'
+    });
+  };
+};
 const getHome= (req,res)=>{
   req.session.Adminloggedin
      if (req.session.loggedin == true) {

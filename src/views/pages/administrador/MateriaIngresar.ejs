@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
-  <title>Document</title>
+  <title>Creación de Materias</title>
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
@@ -15,39 +15,39 @@
     </header>
     <main class="centroOpciones">
       <div class="tituloDatos">
-        <h1>ingresa la materia</h1>
+        <h1>Menú de Creación de Materias</h1>
         </div>
         <div class="contenedorOpciones OP">
           <form action="/administrador/Materia/Ingresar" method="post" class="formu">
-          <div class="username">
-            <input class="inpust" type="number" name="CodigoMateria" required />
-            <label class="labe">codigo de la materia</label>
-          </div>
-          <div class="username">
-            <input class="inpust" type="text" name="Materia" required />
-            <label class="labe">Nombre de la materia</label>
-          </div>
-          <div class="username">
-            <input class="inpust" type="number" name="unidadCredito" required />
-            <label class="labe">unidades de creditos</label>
-          </div>
-          <select name="semestre" class="seleccionDePreResultados">
-            <option selected disabled>selecciona el semestre</option>
-            <option value="1">semestre 1</option>
-            <option value="2">semestre 2</option>
-            <option value="3">semestre 3</option>
-            <option value="4">semestre 4</option>
-            <option value="5">semestre 5</option>
-            <option value="6">semestre 6</option>
-            <option value="7">semestre 7</option>
-            <option value="8">semestre 8</option>
-            <option value="9">semestre 9</option>
-            <option value="10">semestre 10</option>
-          </select>
-          <div class="formuAbajo">
-          <button type="submit" class="btn_1">guardar</button>
-          </div>
-    </form>
+            <div class="username">
+              <input class="inpust" type="text" name="CodigoMateria" required />
+              <label class="labe">Código de la Materia</label>
+            </div>
+            <div class="username">
+              <input class="inpust" type="text" name="Materia" required />
+              <label class="labe">Nombre de la Materia a crear</label>
+            </div>
+            <div class="username">
+              <input class="inpust" type="number" name="unidadCredito" required />
+              <label class="labe">Unidades de creditos de la Materia</label>
+            </div>
+            <select name="semestre" class="seleccionDePreResultados">
+              <option selected disabled>Selecciona el Semestre correspondiente</option>
+              <option value="1">Semestre 1</option>
+              <option value="2">Semestre 2</option>
+              <option value="3">Semestre 3</option>
+              <option value="4">Semestre 4</option>
+              <option value="5">Semestre 5</option>
+              <option value="6">Semestre 6</option>
+              <option value="7">Semestre 7</option>
+              <option value="8">Semestre 8</option>
+              <option value="9">Semestre 9</option>
+              <option value="10">semestre 10</option>
+            </select>
+            <div class="formuAbajo">
+              <button type="submit" class="btn_1">Guardar Registro</button>
+            </div>
+          </form>
         </div>
     </main>
 

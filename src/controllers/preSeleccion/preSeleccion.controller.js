@@ -16,7 +16,7 @@ const getPre = (req, res) => {
 const getPeriodo = (req, res) => {
   
   if (req.session.loggedin == true) {
-    connection.query('SELECT * FROM asig_inscritos a JOIN ProcesoInscripcion p ON(a.proceso_id = p.id)', async (error, result) => {
+    connection.query('select p.id, e.id, pe.id, s.id from ProcesoInscripcion p join estudiantes e on(p.estudiante_id = e.id) join periodo pe on(p.periodo_id = pe.id) join semestre s on(p.semestre_id = s.id) where estudiante_id = ?', [req.session.estudianteID],async (error, result) => {
       console.log(result)
       if (error) {
         console.log(error);
@@ -193,7 +193,7 @@ const postseleccion=(req,res)=>{
               }
 
               if (resulta.length > 0) {
-                connection.query('INSERT INTO asig_inscritos(proceso_id, materias_id, estudiante_id) VALUES(?, ?, ?)', [result[0].id, result[0].estudiante_id, resulta[0].id], async (error) => {
+                connection.query('INSERT INTO asig_inscritos(proceso_id, materias_id) VALUES(?, ?)', [result[0].id, resulta[0].id], async (error) => {
                   console.log(result)
                   if (error) {
                     console.log(error);
