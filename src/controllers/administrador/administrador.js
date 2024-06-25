@@ -74,10 +74,46 @@ const getHome= (req,res)=>{
   }
   }
 
+const getinfoEstudiante=(req,res)=>{
+  req.session.Adminloggedin
+    res.render('pages/administrador/inforDeEstudiante',{
+      AdminName: req.session.adminName,
+  
+  })
+}
+const postinfoEstudiante=(req,res)=>{
+  const cedula =req.body.cedula;
+  req.session.Adminloggedin
+  const query='select * from estudiantes where cedula= ?'
+  connection.query(query,[cedula],(error,result)=>{
+    const estudiante= result
+      console.log(result.length)
+      if(result.length == 0){
+      res.render('pages/administrador/inforDeEstudiante', {
+        AdminName:req.session.adminName,
+        error: false,
+        alert: true,
+        alertTitle: 'Error!',
+        alertMessage: "cedula no existe",
+        alertIcon: "error",
+        showConfirmButtom: false,
+        timer: 2000,
+        ruta: 'administrador/home/infoEstudiante'
+    });
+      }else{
+      res.render('pages/administrador/estudianteInfor',{
+        AdminName:req.session.adminName,
+        estudiante
+      })
+      }
+  })
+}
 
 
 module.exports = {
   getInicioDeSesion,
   postSession,
-  getHome
+  getHome,
+  getinfoEstudiante,
+  postinfoEstudiante
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+  <title>Document</title>
+</head>
+<body class="bodyDeSeleccion">
+  <%- include('../../partials/header.ejs'); %>
+  <div class="encabezados Centro">
+    <h1 class="tituloUsuario"><%= AdminName %></h1> 
+    <a href="/administrador/home"><button class="btn-3">volver al home</button></a> 
+  </div>
+  </header>
+
+  <main class="centroPreResultados">
+  <div class="TituloInfo">
+  <h1>busqueda de estudiante</h1>
+  </div>
+    <div class="InformacionDelCentro">
+      <h3 class="tituloDePreResultado">ingrese la cedula del estudiante a buscar </h3>
+    <form action="/administrador/home/infoEstudiante" method="post" class="formPreResultado">
+        <input class="inputInfoEstudianAdmin" placeholder="ingrese la cedula"  type="number" name="cedula" required />
+    <button class="btn_1" type="submit">buscar</button>
+    </form>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(typeof alert != "undefined") { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButtom: '<%= showConfirmButtom %>',
+        timer: '<%= timer %>'
+      }).then(() => {
+        window.location = '/<%= ruta %>';
+      })
+    </script>
+    <% } %>
+  <%- include('../../partials/footer.ejs'); %>
+</body>
+</html>

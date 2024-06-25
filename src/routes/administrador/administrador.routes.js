@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const {getInicioDeSesion,postSession,getHome}=require('../../controllers/administrador/administrador')
+const {getInicioDeSesion,postSession,getHome,getinfoEstudiante,postinfoEstudiante}=require('../../controllers/administrador/administrador')
 
 const router = Router();
 
@@ -9,7 +9,8 @@ router.post('/administrador/InicioDeSesion',postSession);
 
 router.get('/administrador/home',getHome);
 
-
+router.get('/administrador/home/infoEstudiante',getinfoEstudiante)
+router.post('/administrador/home/infoEstudiante',postinfoEstudiante)
 
 
 router.get("/logout", (req, res) => {
