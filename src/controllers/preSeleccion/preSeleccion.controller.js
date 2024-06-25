@@ -108,7 +108,9 @@ const postSemestreEleccion = (req, res) => {
         name: req.session.name
       });
     }else{
-      res.send('No se encontraron materias correspondientes a ese Semestre');
+      res.render('pages/administrador/sinMaterias',{
+        AdminName: req.session.adminName
+      })
     }
   
   })

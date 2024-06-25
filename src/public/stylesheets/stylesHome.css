@@ -133,13 +133,17 @@ height: 40px;
 /* estilos del footer*/
 
 .parteDeAbajo {
-  width: 100%;
+  width: 99.8%;
+  height: 80px;
   display: flex;
   justify-content: start;
   align-items: center;
-  background-color: rgb(99, 97, 97);
   color: white;
   gap: 70px;
+  background-color: #34495E;
+}
+.pe{
+  margin-top: 0px;
 }
 
 .columna {
@@ -582,6 +586,7 @@ color: white;
   align-items: center;
   flex-direction: column;
   flex: 1;
+  margin-bottom:60px ;
 }
 
 .SubtituloSeleccion{
@@ -1042,6 +1047,18 @@ align-items: center;
   border-radius: 20px;
 }
 .datosEstudiante{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*estilos del no hay materias en votaciones*/
+
+.NohayMateria{
+  width: 500px;
+  height: 400px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;

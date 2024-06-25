@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <h1 class="tituloUsuario"><%= AdminName %></h1> 
+      <a href="/administrador/home"><button class="btn-3">volver al home</button></a> 
+    </div>
+    </header>
+    <main class="CentroDeAdmin">
+      <div class="tituloDatos NohayMateria">
+        <h1>no esta en votaciones las materias de este semestre </h1>
+        <a href="/"><button class="btn_1">volver al home</button></a>
+      </div>
+    </main>
+  <%- include('../../partials/footer.ejs'); %>
+</body>
+</html>

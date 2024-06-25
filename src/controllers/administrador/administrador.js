@@ -87,6 +87,7 @@ const postinfoEstudiante=(req,res)=>{
   const query='select * from estudiantes where cedula= ?'
   connection.query(query,[cedula],(error,result)=>{
     const estudiante= result
+    console.log(result)
       console.log(result.length)
       if(result.length == 0){
       res.render('pages/administrador/inforDeEstudiante', {

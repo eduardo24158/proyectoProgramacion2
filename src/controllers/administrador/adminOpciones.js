@@ -17,7 +17,7 @@ res.render('pages/administrador/MateriaIngresar',{adminName:req.session.adminNam
 }
 
 const postMateriaIngresar=(req,res)=>{
-
+  req.session.Adminloggedin
 const CodigoMateria= req.body.CodigoMateria;
 const NombreMateria=req.body.Materia;
 const unidadCredito=req.body.unidadCredito;
@@ -31,6 +31,7 @@ const semestre_id = req.body.semestre;
 
   console.log('ya esta esa materia ingresada')
   res.render('pages/administrador/MateriaIngresar', {
+    adminName:req.session.adminName,
     alert: true,
     alertTitle: 'no se puede',
     alertMessage: "la materia ya esta en la base de datos",
@@ -48,6 +49,7 @@ const semestre_id = req.body.semestre;
   }else{
     console.log('se anadio a la base de datos')
     res.render('pages/administrador/MateriaIngresar', {
+      adminName:req.session.adminName,
       alert: true,
       alertTitle: 'listo!',
       alertMessage: "Materia añadida",
@@ -71,6 +73,7 @@ res.render('pages/administrador/MateriaEliminar',{adminName:req.session.adminNam
 
 
 const postMateriaEliminar=(req,res)=>{
+  req.session.Adminloggedin
   const Materia=req.body.Materia;
   const semestre=req.body.semestre;
   const queryDelete= 'DELETE FROM materias WHERE Materia= ? AND semestre_id = ? ';
@@ -83,6 +86,7 @@ const postMateriaEliminar=(req,res)=>{
     connection.query(queryDelete,[Materia,semestre],(error,result)=>{
       console.log('materia eliminada')
       res.render('pages/administrador/MateriaEliminar', {
+        adminName:req.session.adminName,
         alert: true,
         alertTitle: 'hecho!',
         alertMessage: "Materia Borrada con existo",
@@ -95,6 +99,7 @@ const postMateriaEliminar=(req,res)=>{
   })
   }else{
     res.render('pages/administrador/MateriaEliminar', {
+      adminName:req.session.adminName,
       alert: true,
       alertTitle: 'Error',
       alertMessage: "la materia que intenta eliminar no existe",
