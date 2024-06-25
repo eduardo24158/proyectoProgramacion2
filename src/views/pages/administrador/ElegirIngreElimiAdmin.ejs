@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
-  <title>Document</title>
-</head>
-<body>
-  <%- include('../../partials/header.ejs'); %>
-  <div class="encabezados Centro">
-    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
-  </div>
-  </header>
-  <main class="centroOpciones">
-    <div class="tituloDatos">
-      <h1>opciones</h1>
-      </div>
-      <div class="contenedorOpciones">
-      <div class="opciones">
-        <h1>ingresar una materia</h1>
-        <a href="/administrador/Materia/Ingresar"><button class="btn_1">continuar</button></a>
-      </div>
-      <div class="opciones">
-        <h1>eliminar una materia</h1>
-        <a href="/administrador/Materia/eliminar"><button class="btn_1">continuar</button></a>
-      </div>
-      </div>
-  </main>
-  <%- include('../../partials/footer.ejs'); %>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+    <title>Menú</title>
+  </head>
+  <body>
+    <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+    </div>
+    </header>
+    <main class="centroOpciones">
+      <div class="tituloDatos">
+        <h1>Opciones</h1>
+        </div>
+        <div class="contenedorOpciones">
+        <div class="opciones">
+          <h1>Ingresar una materia</h1>
+          <a href="/administrador/Materia/Ingresar"><button class="btn_1">Continuar</button></a>
+        </div>
+        <div class="opciones">
+          <h1>Eliminar una materia</h1>
+          <a href="/administrador/Materia/eliminar"><button class="btn_1">Continuar</button></a>
+        </div>
+        </div>
+    </main>
+    <%- include('../../partials/footer.ejs'); %>
+  </body>
 </html>

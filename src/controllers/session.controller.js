@@ -7,12 +7,12 @@ const getSession = (req, res) => {
         login: true,
         name: req.session.name
         });
-        }else if (req.session.Adminloggedin == true) {
+    }else if (req.session.Adminloggedin == true) {
         res.render('pages/administrador/administradorHome', {
         login: true,
         AdminName: req.session.adminName
         });
-        }else{
+    }else{
         res.render('pages/estudiante/inicioDeSesion');
     }
 };
@@ -21,7 +21,7 @@ const postSession = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    if (email&& password) {
+    if (email && password) {
         connection.query('SELECT * FROM estudiantes WHERE email = ?', [email], async(error, result)=>{
             if (result.length == 0 || !(await bcrypt.compare(password, result[0].password))) {
                 res.render('pages/estudiante/inicioDeSesion', {
@@ -34,7 +34,7 @@ const postSession = async (req, res) => {
                     ruta: 'estudiante/session'
                 });
             }else{
-                req.session.estudianteID = result[0].id;
+                req.session.estudianteID = parseInt(result[0].id);
                 req.session.name = result[0].name;
                 req.session.lastname =result[0].lastname;
                 req.session.age=result[0].age;

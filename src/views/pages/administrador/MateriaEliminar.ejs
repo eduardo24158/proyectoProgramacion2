@@ -4,42 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
-  <title>Document</title>
+  <title>Eliminación de Materias</title>
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
     <div class="encabezados Centro">
-      <a href="/administrador/home"><button class="btn-3">volver al home</button></a> 
+      <a href="/administrador/home"><button class="btn-3">Volver al home</button></a> 
     </div>
     </header>
     <main class="centroOpciones">
       <div class="tituloDatos">
-      <h1>eliminar la materia</h1>
+        <h1>Menú de Eliminación de Materias</h1>
       </div>
       <form action="" method="post" class="formu">
         <div class="contenedorOpciones ContenedorEliminar">
           <div class="username">
           <input class="inpust" type="text" name="Materia" required />
-          <label class="labe">nombre de la materia</label>
+          <label class="labe">Nombre de la Materia a <strong>Eliminar</strong></label>
         </div>
         <select name="semestre" class="seleccionDePreResultados">
-          <option selected disabled>selecciona el semestre</option>
-          <option value="1">semestre 1</option>
-          <option value="2">semestre 2</option>
-          <option value="3">semestre 3</option>
-          <option value="4">semestre 4</option>
-          <option value="5">semestre 5</option>
-          <option value="6">semestre 6</option>
-          <option value="7">semestre 7</option>
-          <option value="8">semestre 8</option>
-          <option value="9">semestre 9</option>
-          <option value="10">semestre 10</option>
+          <option selected disabled>Selecciona el Semestre</option>
+          <option value="1">Semestre 1</option>
+          <option value="2">Semestre 2</option>
+          <option value="3">Semestre 3</option>
+          <option value="4">Semestre 4</option>
+          <option value="5">Semestre 5</option>
+          <option value="6">Semestre 6</option>
+          <option value="7">Semestre 7</option>
+          <option value="8">Semestre 8</option>
+          <option value="9">Semestre 9</option>
+          <option value="10">Semestre 10</option>
         </select>
         <div class="formuAbajo">
-        <button type="submit" class="btn_1">Eliminar</button>
+        <button type="submit" class="btn_1"><strong>Eliminar</strong></button>
         </div>
         </div>
-  </form>
+      </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if(typeof alert != "undefined") { %>
