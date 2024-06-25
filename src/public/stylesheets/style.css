@@ -135,6 +135,9 @@ height: 40px;
   align-items: center;
   gap: 20px;
   background-color: rgb(2, 15, 32);
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
 }
 
 .contenedorDeCartas{
@@ -285,15 +288,36 @@ height: 40px;
 
 /*ESTILOS DEL FOOTER*/
 
-.parteDeAbajo {
+
+.FooterPrinci{
   width: 100%;
   height: 90px;
+  background-color: #21618C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.parteDeAbajo {
+  
+  width: 99.8%;
+  height: 80px;
   display: flex;
   justify-content: start;
   align-items: center;
-  background-color: rgb(99, 97, 97);
   color: white;
   gap: 70px;
+  background-color: #34495E;
+}
+
+.abajoFooter{
+  width: 100%;
+  height: 20px;
+  background-color: #21618C;
+  text-align: center;
+  color: white;
 }
 
 .columna {

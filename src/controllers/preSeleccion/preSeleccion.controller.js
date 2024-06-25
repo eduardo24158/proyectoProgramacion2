@@ -1,17 +1,20 @@
 const { connection } = require('../../db');
 
 const getPre = (req, res) => {
-    if (req.session.loggedin == true) {
-        res.render('pages/principalHome/preEleccionMateria', {
+  req.session.loggedin
+  if (req.session.Adminloggedin == true) {
+    res.render('pages/administrador/administradorHome', {
         login: true,
-        name: req.session.name
-        });
-    }else{
-        res.redirect('/');
-    }
+        AdminName: req.session.adminName
+        
+    });
+}else{
+    res.render('pages/principalHome/preEleccionMateria',{name: req.session.name})
+}
 }
 
 const getPeriodo = (req, res) => {
+  
   if (req.session.loggedin == true) {
     connection.query('SELECT * FROM asig_inscritos a JOIN ProcesoInscripcion p ON(a.proceso_id = p.id)', async (error, result) => {
       console.log(result)
@@ -20,11 +23,13 @@ const getPeriodo = (req, res) => {
       }
 
       if (result.length > 0) {
-        res.render('pages/principalHome/yaVoto');
+        
+        res.render('pages/principalHome/yaVoto',{name:req.session.name});
       }else{
         res.render('pages/principalHome/periodoEstu', {
           proceso: false,
-          estatus: 'Elige a tu antojo'
+          estatus: 'Elige a tu antojo',
+          name: req.session.name
         });
       }
     });
@@ -35,7 +40,7 @@ const getPeriodo = (req, res) => {
 
 const postPeriodo = async (req, res) => {
   const semestre = req.body.select;
-
+  req.session.loggedin
     connection.query('SELECT nombrePeriodo, id FROM periodo WHERE estatus = ?', [semestre], async(error, result) => {
       console.log(result[0].nombrePeriodo)
       console.log(result)
@@ -45,23 +50,36 @@ const postPeriodo = async (req, res) => {
       if (result[0].nombrePeriodo === '2025-1') {
         res.render('pages/principalHome/periodoEstu', {
             proceso: false,
-            estatus: 'Este semestre por ahora está inactivo'
+            estatus: 'Este semestre por ahora está inactivo',
+            name: req.session.name
         });
       }else if(result[0].nombrePeriodo === '2024-2'){
         req.session.periodoID = result[0].id
         res.render('pages/principalHome/periodoEstu', {
             proceso: true,
-            estatus: 'Procedamos'
+            estatus: 'Procedamos',
+            name: req.session.name
         });
       }
     });
 }
 
 const getSemestreEleccion = (req, res) => {
-  res.render('pages/principalHome/SemestreSeleccion')
+  req.session.loggedin
+  if (req.session.Adminloggedin == true) {
+    res.render('pages/administrador/administradorHome', {
+        login: true,
+        AdminName: req.session.adminName
+    });
+}else{
+  res.render('pages/principalHome/SemestreSeleccion',{name:req.session.name})
 }
 
+}
+
+
 const postSemestreEleccion = (req, res) => {
+  req.session.loggedin
   const DatoSemestre = req.body.semestre;
   const query = 'SELECT m.materia, m.unidadCredito, m.codigoMateria, m.semestre_id FROM materias m WHERE semestre_id = ?;';
   connection.query(query, [DatoSemestre], (error, result)=>{
@@ -86,7 +104,8 @@ const postSemestreEleccion = (req, res) => {
       res.render('pages/principalHome/seleccion',{
         materias: req.session.materias,
         ud:9,
-        status: false
+        status: false,
+        name: req.session.name
       });
     }else{
       res.send('No se encontraron materias correspondientes a ese Semestre');
@@ -96,6 +115,8 @@ const postSemestreEleccion = (req, res) => {
 }
 
 const getseleccion = (req, res) => {
+  req.session.loggedin
+  console.log(req.session.name)
   console.log(req.body);
     if(req.session.loggedin == true){
           const query='SELECT materias.materia, materias.unidadCredito, semestre.nombreSemestre, materias.codigoMateria, semestre.id,materias.semestre_id FROM materias join semestre on(materias.semestre_id = semestre.id);'
@@ -109,7 +130,8 @@ const getseleccion = (req, res) => {
                 arreglo: result,
                 ud:9,
                 status: false,
-                materias: req.session.materias
+                materias: req.session.materias,
+                
               });
             }else{
               res.send('Error: No se encontraron las materias...');
@@ -190,7 +212,15 @@ const postseleccion=(req,res)=>{
 }
 
 const getPreResultados = (req, res)=>{
-  res.render('pages/principalHome/PreResultados')
+  req.session.loggedin
+  if (req.session.Adminloggedin == true) {
+    res.render('pages/administrador/administradorHome', {
+        login: true,
+        AdminName: req.session.adminName
+    });
+}else{
+  res.render('pages/principalHome/PreResultados',{name:req.session.name})
+}
 };
 
 const postPreResultados= (req,res)=>{
@@ -204,12 +234,15 @@ const postPreResultados= (req,res)=>{
     if(result.length > 0){
       const Materias = result;
       console.log(Materias);
-      res.render('pages/principalHome/resultadosPreEleccion', {Materias});
+      res.render('pages/principalHome/resultadosPreEleccion', {Materias,
+        name:req.session.name
+      });
     }
   });
 }
 
 const getResultados = (req, res) => {
+  req.session.loggedin
   const query='SELECT semestre.nombreSemestre, materias.materia, materias.votosMateria FROM materias join semestre on(materias.semestre_id = semestre.id);';
   connection.query(query, async (error, result) => {
     if (error) {
@@ -219,7 +252,8 @@ const getResultados = (req, res) => {
     if (result.length > 0) {
       console.log(result);
       res.render('pages/principalHome/resultadosPreEleccion',{
-        arreglo: result
+        arreglo: result,
+        name:req.session.name
       });
     }
   });

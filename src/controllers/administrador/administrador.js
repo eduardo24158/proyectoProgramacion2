@@ -2,13 +2,18 @@ const { connection }= require('../../db');
 
 
 const getInicioDeSesion= (req,res)=>{
-  if (req.session.Adminloggedin == true) {
+  if (req.session.loggedin == true) {
+    res.render('pages/estudiante/home', {
+        login: true,
+        name: req.session.name
+    });
+}else if (req.session.Adminloggedin == true) {
     res.render('pages/administrador/administradorHome', {
-      login: true,
-      AdminName: req.session.adminName
+        login: true,
+        AdminName: req.session.adminName
     });
 }else{
-    res.render('pages/administrador/inicioDeAdmin');
+    res.render('pages/administrador/inicioDeAdmin',)
 }
 }
 
@@ -55,11 +60,18 @@ const postSession = async (req, res) => {
 }
 }
 const getHome= (req,res)=>{
-
-    res.render('pages/administrador/administradorHome', {
-      login: true,
-      AdminName: req.session.adminName
-    });
+  req.session.Adminloggedin
+     if (req.session.loggedin == true) {
+      res.render('pages/estudiante/home', {
+          login: true,
+          name: req.session.name
+      });
+  }else if (req.session.Adminloggedin == true) {
+      res.render('pages/administrador/administradorHome', {
+          login: true,
+          AdminName: req.session.adminName
+      });
+  }
   }
 
 

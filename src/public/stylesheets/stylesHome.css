@@ -104,8 +104,11 @@ height: 40px;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
-  background-color: rgb(2, 15, 32);
   gap: 20px;
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
+
 
 }
 
@@ -409,8 +412,10 @@ cursor: pointer;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
-  background-color: rgb(2, 15, 32);
   gap: 20px;
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
 }
 
 .CentroDatos{
@@ -522,8 +527,11 @@ color: white;
   justify-content: baseline;
   align-items: center;
   height: fit-content;
-  background-color: rgb(2, 15, 32);
   flex-direction: column;
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
+
 }
 
 .tituloDeSeleccion{
@@ -612,7 +620,10 @@ color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(2, 15, 32);;
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
+
 }
 .tituloConfi{
   text-align: center;
@@ -655,7 +666,9 @@ color: white;
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
-  background-color: rgb(2, 15, 32);
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
   gap: 20px;
 }
 
@@ -667,7 +680,9 @@ color: white;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(2, 15, 32);
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
 }
 
 .InformacionDelCentro{
@@ -715,7 +730,9 @@ color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(2, 15, 32);
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
   gap: 20px;
 }
 
@@ -748,7 +765,10 @@ color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(2, 15, 32);
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
+
   gap: 20px;
 }
 
@@ -894,7 +914,9 @@ color: white;
   flex-direction: column;
   align-items: center;
   font-family: sans-serif;
-  background-color: rgb(2, 15, 32);
+  background-image: url(.././image/3407044.jpg);
+  background-repeat: no-repeat;
+  background-size: 2000px;
   gap: 20px;
 }
 

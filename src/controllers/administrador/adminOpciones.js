@@ -1,15 +1,19 @@
-const { query } = require('express');
+
 const { connection }= require('../../db');
 
 
 
 const getAdminOpciones=(req,res)=>{
-  res.render('pages/administrador/ElegirIngreElimiAdmin')
+  req.session.Adminloggedin
+  res.render('pages/administrador/ElegirIngreElimiAdmin',{
+    adminName:req.session.adminName
+  })
 
 }
 
 const getMateriaIngresar=(req,res)=>{
-res.render('pages/administrador/MateriaIngresar')
+  req.session.Adminloggedin
+res.render('pages/administrador/MateriaIngresar',{adminName:req.session.adminName})
 }
 
 const postMateriaIngresar=(req,res)=>{
@@ -61,7 +65,8 @@ const semestre_id = req.body.semestre;
 
 
 const getMateriaEliminar=(req,res)=>{
-res.render('pages/administrador/MateriaEliminar')
+  req.session.Adminloggedin
+res.render('pages/administrador/MateriaEliminar',{adminName:req.session.adminName})
 }
 
 

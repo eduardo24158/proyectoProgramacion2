@@ -1,7 +1,14 @@
 const { connection }= require('../db');
 
 const geteliminarCuenta=(req,res)=>{
-  res.render('pages/estudiante/eliminarCuenta')
+  if (req.session.Adminloggedin == true) {
+    res.render('pages/administrador/administradorHome', {
+        login: true,
+        AdminName: req.session.adminName
+    });
+}else{
+    res.render('pages/estudiante/eliminarCuenta')
+}
 }
 
 const PostEliminarcuenta=(req,res)=>{
@@ -9,6 +16,7 @@ const PostEliminarcuenta=(req,res)=>{
   const correo= req.body.email;
   const queryDeleteuser ='DELETE FROM estudiantes WHERE email= ?'
   connection.query(queryDeleteuser,[correo],(error,result)=>{
+    console.log(result)
     if (error){
       console.log(error);
   }else{
