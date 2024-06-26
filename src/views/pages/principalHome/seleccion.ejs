@@ -4,35 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../.././stylesheets/stylesHome.css">
-  <title>Document</title>
+  <title>PreSelección Entrante</title>
 </head>
 <body class="bodyDeSeleccion">
   <%- include('../../partials/header.ejs'); %>
   <div class="encabezados Centro">
-    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
-    <a href="/"><button class="btn-3">volver al home</button></a> 
+    <a href="/logout"><button class="btn-3">Cerrar Sesión</button></a> 
+    <a href="/"><button class="btn-3">Volver al Home</button></a> 
   </div>
 </header>
 <main class="CentroSeleccion">
-<div class="tituloDeSeleccion">
-  <h1>Bienvenido a la seleccion de materia</h1>
-</div>
-<div class="centroSeleccionDeMateria">
-  <h2 class="SubtituloSeleccion">selecciona las materias que quieres ver</h2>
-  <h2 class="SubtituloSeleccion">(ten en cuenta las unidades de credito,tienes <%= ud %>)</h2>
-  <form action="/estudiante/preEleccion/seleccion" method="post" class="formularioSeleccion">
-  <% if (status) { %>
-    <p><%= men %></p>
-    <p><a class="botonLink" href="/estudiante/preEleccion/seleccion">Presiona aquí</a> para volver a intentarlo</p>
-  <% } %>
-  <% for (let i = 0; i < materias.length; i++) { %>
-    <div class="mostrandoMateria">
-      <div class="divcheck"><input type="checkbox" class="check" name="<%= materias[i].materia %>" value="<%= materias[i].unidadCredito %>"></div><h2 class="NombreMaterias"> <%= materias[i].materia %> : <%= materias[i].codigoMateria %></h2>
-    </div>
-  <%}%>
-    <button class="btn_1" type="submit">confirmar</button>
-</form>
-</div>
+  <div class="tituloDeSeleccion">
+    <h1>Bienvenido a la <strong>PreSelección</strong> de Cursos</h1>
+  </div>
+  <div class="centroSeleccionDeMateria">
+    <h2 class="SubtituloSeleccion">Selecciona los <strong>Cursos</strong> que quieras ver en este Periodo</h2>
+    <h2 class="SubtituloSeleccion">(Tenga en Cuenta las <strong>unidades de credito</strong>, tienes un total de <%= ud %> unidades!)</h2>
+    <form action="/estudiante/preEleccion/seleccion" method="post" class="formularioSeleccion">
+      <% if (status) { %>
+        <p><%= men %></p>
+        <p><a class="botonLink" href="/estudiante/preEleccion/seleccion">Presiona aquí</a> para volver a intentarlo</p>
+      <% } %>
+      <% for (let i = 0; i < materias.length; i++) { %>
+        <div class="mostrandoMateria">
+          <div class="divcheck"><input type="checkbox" class="check" name="<%= materias[i].materia %>" value="<%= materias[i].unidadCredito %>"></div><h2 class="NombreMaterias"> <%= materias[i].materia %> : <%= materias[i].codigoMateria %></h2>
+        </div>
+      <%}%>
+        <button class="btn_1" type="submit">Confirmar PreSelección</button>
+    </form>
+  </div>
 </main>
 <%- include('../../partials/footer.ejs'); %>
 </body>

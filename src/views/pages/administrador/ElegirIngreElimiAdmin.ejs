@@ -4,27 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
-  <title>Document</title>
+  <title>Configuración</title>
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
   <div class="encabezados Centro">
     <h1 class="tituloUsuario"><%= adminName %></h1> 
-    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
+    <a href="/logout"><button class="btn-3">Cerrar Sesión</button></a> 
   </div>
   </header>
   <main class="centroOpciones">
     <div class="tituloDatos">
-      <h1>opciones</h1>
+      <h1>Menú de Asignación y Eliminación de Cursos</h1>
+      <p>Acá como administrador, podrá ingresar las <strong>Materias correspondientes</strong> a los semestres, todo éste órden lo tiene pautado en el Pensum que se le proporcionó de la Facultad</p>
+      <p>De todas formas, si comete un error a la hora de Asignar las materias, <strong>lo puede corregir</strong>, justamente viendo primero en una tabla que se encuentra en su menú de administrador proporcionandole esa información, la materia que introdujo mal y eliminarla posteriormente en este menú en el apartado de eliminación. Tenga suerte!</p>
+      <br>
       </div>
       <div class="contenedorOpciones">
       <div class="opciones">
-        <h1>ingresar una materia</h1>
-        <a href="/administrador/Materia/Ingresar"><button class="btn_1">continuar</button></a>
+        <h1>Asignar Materias</h1>
+        <a href="/administrador/Materia/Ingresar"><button class="btn_1">Continuar</button></a>
       </div>
       <div class="opciones">
-        <h1>eliminar una materia</h1>
-        <a href="/administrador/Materia/eliminar"><button class="btn_1">continuar</button></a>
+        <h1>Eliminar Materias</h1>
+        <a href="/administrador/Materia/eliminar"><button class="btn_1">Continuar</button></a>
       </div>
       </div>
   </main>

@@ -10,28 +10,29 @@
   <%- include('../../partials/header.ejs'); %>
     <div class="encabezados Centro">
       <h1 class="tituloUsuario"><%= name %></h1> 
-      <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
-      <a href="/"><button class="btn-3">volver al home</button></a> 
+      <a href="/logout"><button class="btn-3">Cerrar Sesión</button></a> 
+      <a href="/"><button class="btn-3">Volver al Home</button></a> 
     </div>
     </header>
     <main class="centroPreResultados">
       <div class="InformacionDelCentro">
-        <h3 class="tituloDePreResultado">selecciona el semestre de las materias las cuales quieres votar </h3>
+        <h3 class="tituloDePreResultado">Selección de Semestre</h3>
+        <p>Selecciona el Semestre correspondiente a las Materias que quieres <strong>PreSeleccionar</strong></p>
       <form action="/estudiante/preEleccion/SemestreEleccion" method="post" class="formPreResultado">
         <select name="semestre" class="seleccionDePreResultados">
-          <option selected disabled>selecciona el semestre</option>
-          <option value="1">semestre 1</option>
-          <option value="2">semestre 2</option>
-          <option value="3">semestre 3</option>
-          <option value="4">semestre 4</option>
-          <option value="5">semestre 5</option>
-          <option value="6">semestre 6</option>
-          <option value="7">semestre 7</option>
-          <option value="8">semestre 8</option>
-          <option value="9">semestre 9</option>
-          <option value="10">semestre 10</option>
+          <option selected disabled>Selecciona el Semestre</option>
+          <option value="1">Primer Semestre</option>
+          <option value="2">Segundo Semestre</option>
+          <option value="3">Tercero Semestre</option>
+          <option value="4">Cuarto Semestre</option>
+          <option value="5">Quinto Semestre</option>
+          <option value="6">Sexto Semestre</option>
+          <option value="7">Séptimo Semestre</option>
+          <option value="8">Octavo Semestre</option>
+          <option value="9">Noveno Semestre</option>
+          <option value="10">Décimo Semestre</option>
         </select>
-      <button class="btn_1" type="submit">continuar</button>
+        <button class="btn_1" type="submit">Continuar</button>
       </form>
       </div>
     </main>

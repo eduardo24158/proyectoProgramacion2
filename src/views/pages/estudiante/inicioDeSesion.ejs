@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../.././stylesheets/style.css">
-  <title>inicio de sesion </title>
+  <title>Session</title>
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
   <div class="encabezados Centro">
-    <a href="/estudiante/session"><button class="btn-3">Iniciar sesion</button></a>
+    <a href="/estudiante/session"><button class="btn-3">Inicio de Sesión</button></a>
     <a href="/estudiante/register"><button class="btn-3">Registro</button></a> 
     <a href="/"><button class="btn-3">Inicio</button></a> 
   </div>
   </header>
-<main class="centro centro--inicioDeSesion">
-    <div class="tituloDelRegistro">
-    <h1>Iniciar sesión</h1>
-    </div>
-    <div class="formulario ForminicioDeSesion">
-      <form action="/estudiante/session" method="post" class="formu">
-        <div class="username">
-          <input class="inpust" type="text" name="email" required />
-          <label class="labe">Correo</label>
-        </div>
-        <div class="username">
-          <input class="inpust" type="password" name="password" required />
-          <label class="labe">Contraseña</label>
-        </div>
-        <div class="formuAbajo">
-        <p class="pa">Estoy de acuerdo con <a href="/TerminosCondiciones" class="a">Termino y Condiciones</a></p>
-        <button type="submit" class="btn_1">Iniciar sesion</button>
-        <p class="pa"><a href="/estudiante/register" class="a">¿No tienes una cuenta?</a></p>
-        </div>
-  </form>
-</main>
+  <main class="centro centro--inicioDeSesion">
+      <div class="tituloDelRegistro">
+      <h1>Iniciar sesión</h1>
+      </div>
+      <div class="formulario ForminicioDeSesion">
+        <form action="/estudiante/session" method="post" class="formu">
+          <div class="username">
+            <input class="inpust" type="text" name="email" required />
+            <label class="labe">Correo</label>
+          </div>
+          <div class="username">
+            <input class="inpust" type="password" name="password" required />
+            <label class="labe">Contraseña</label>
+          </div>
+          <div class="formuAbajo">
+            <p class="pa">Estoy de acuerdo con los <a href="/TerminosCondiciones" class="a">Términos y Condiciones</a></p>
+            <button type="submit" class="btn_1">Iniciar sesión</button>
+            <p class="pa"><a href="/estudiante/register" class="a">¿No tienes una cuenta?</a></p>
+          </div>
+       </form>
+  </main>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if(typeof alert != "undefined") { %>
       <script>
         Swal.fire({
@@ -50,7 +50,6 @@
         })
       </script>
       <% } %>
-
 <%- include('../../partials/footer.ejs'); %>
 </body>
 </html>

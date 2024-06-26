@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
   <%- include('../../partials/header.ejs'); %>
   <div class="encabezados Centro">
     <h1 class="tituloUsuario"><%= name %></h1> 
-    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
-    <a href="/"><button class="btn-3">volver al home</button></a> 
+    <a href="/logout"><button class="btn-3">Cerrar sesión</button></a> 
+    <a href="/"><button class="btn-3">Volver al Home</button></a> 
   </div>
 </header>
 <main class="centro">
@@ -23,6 +23,8 @@
         <option value="activo">Mar - Jul 2024-2</option>
         <option value="inactivo">Oct - Feb 2025-1</option>
       </select>
+      <button type="submit" class="btn_1">Listo</button>
+    </form>
       <% if (proceso) { %>
         <div class="afirmativo">
           <p class="p_Procedimiento"><%= estatus %></p>
@@ -32,8 +34,6 @@
       <% if (!proceso) { %>
         <p><%= estatus %></p>
       <% } %>
-      <button type="submit" class="btn_1">Listo</button>
-    </form>
   </div>
 </main>
 </body>
