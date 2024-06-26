@@ -4,31 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
-  <title>Document</title>
+  <title>Proceso de Eliminación</title>
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
     <div class="encabezados Centro">
-      <a href="/estudiante/home"><button class="btn-3">volver al home</button></a> 
+      <a href="/estudiante/home"><button class="btn-3">Volver al Home</button></a> 
     </div>
     </header>
+
 <main class="Centroeliminacion">
   <div class="tituloDatos">
-    <h1>eliminacion de cuenta</h1>
+    <h1>Proceso de <strong>Eliminación</strong></strong></h1>
   </div>
   <div class="InfoEliminarCuenta">
-    <h1>estas seguro de eliminar tu cuenta?</h1>
-    <h2>(ingresa el correo para confirmar )</h2>
+    <h1>¿Está Seguro de que desea <strong>Eliminar tu cuenta</strong>?</h1>
+    <h2>(Ingrese el <strong>Correo</strong> para confirmar la eliminación de su cuenta)</h2>
     <form action="/estudiante/home/eliminarCuenta" method="post" class="formu formuelimi">
       <div class="username elimi">
         <input class="inpust" type="text" name="email" required />
         <label class="labe">Correo</label>
       </div>
       <div class="formuAbajo">
-      <button type="submit" class="btn_1 botonEliminar">eliminar cuenta</button>
+      <button type="submit" class="btn_1 botonEliminar"><strong>Eliminar cuenta</strong></button>
       </div>
-</form>
+    </form>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <% if(typeof alert != "undefined") { %>
   <script>

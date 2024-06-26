@@ -1,6 +1,6 @@
-const { connection }= require('../db');
+const { connection } = require('../db');
 
-const geteliminarCuenta=(req,res)=>{
+const geteliminarCuenta = (req, res) => {
   if (req.session.Adminloggedin == true) {
     res.render('pages/administrador/administradorHome', {
         login: true,
@@ -11,26 +11,29 @@ const geteliminarCuenta=(req,res)=>{
 }
 }
 
-const PostEliminarcuenta=(req,res)=>{
+const PostEliminarcuenta = (req, res) => {
   console.log(req.body)
   const correo= req.body.email;
-  const queryDeleteuser ='DELETE FROM estudiantes WHERE email= ?'
-  connection.query(queryDeleteuser,[correo],(error,result)=>{
+  const queryDeleteuser = 'DELETE FROM estudiantes WHERE email = ?'
+  connection.query(queryDeleteuser, [correo], async (error, result) => {
     console.log(result)
     if (error){
-      console.log(error);
-  }else{
-    res.render('pages/estudiante/eliminarCuenta', {
-      alert: true,
-      alertTitle: 'cumplido!',
-      alertMessage: "cuenta eliminada",
-      alertIcon: "success",
-      showConfirmButtom: false,
-      timer: 2000,
-      ruta: ''
-  });
-  }
-})
+      res.status(404).render('pages/error', {
+        message: 'Error en la Base De Datos D:',
+        status: 404
+      });
+    }else{
+      res.render('pages/estudiante/eliminarCuenta', {
+        alert: true,
+        alertTitle: 'cumplido!',
+        alertMessage: "cuenta eliminada",
+        alertIcon: "success",
+        showConfirmButtom: false,
+        timer: 2000,
+        ruta: ''
+      });
+    }
+  })
 }
 
 module.exports = {

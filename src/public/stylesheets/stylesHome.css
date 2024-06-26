@@ -9,6 +9,7 @@ h2 {
   margin: 0;
   padding: 0;
 }
+
 h1{
   color: white;
 }
@@ -108,11 +109,7 @@ height: 40px;
   background-image: url(.././image/3407044.jpg);
   background-repeat: no-repeat;
   background-size: 2000px;
-
-
 }
-
-
 
 .inicioDePreeleccion {
   margin-top: 20px;

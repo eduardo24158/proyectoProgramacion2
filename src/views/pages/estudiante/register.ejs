@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <title>Página Principal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../.././stylesheets/style.css" />
+    <title>Registro</title>
   </head>
   <body>
     <%- include('../../partials/header.ejs'); %>
     <div class="encabezados Centro">
-      <a href="/estudiante/session"><button class="btn-3">Iniciar sesion</button></a>
+      <a href="/estudiante/session"><button class="btn-3">Inicio de Sesión</button></a>
       <a href="/estudiante/register"><button class="btn-3">Registro</button></a> 
       <a href="/"><button class="btn-3">Inicio</button></a> 
     </div>
     </header>
     <main class="centro centroregistro">
       <div class="tituloDelRegistro">
-        <h1>Registrate aquí!</h1>
+        <h1>Registrate Aquí!</h1>
       </div>
       <div class="formulario">
         <form action="/estudiante/register" method="post" class="formu">
@@ -56,7 +58,7 @@
             </p>
             <button class="btn_1" type="submit">Registrarse</button>
             <p class="pa">
-              <a href="/estudiante/session" class="a">¿Ya tienes una cuenta ?</a>
+              <a href="/estudiante/session" class="a">¿Ya tienes una Cuenta?</a>
             </p>
           </div>
         </form>

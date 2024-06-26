@@ -42,13 +42,32 @@ const postRegisterStudent = async (req, res) => {
             error: req.session.error,
             message: req.session.message
         });
+    }else{
+        connection.query('SELECT cedula FROM estudiantes WHERE cedula = ?', [cedula], async(error, result) => {
+            if(error){
+                res.status(404).render('pages/error', {
+                    message: 'Error en la Base De Datos D:',
+                    status: 404
+                });
+            }else if (result.length > 0) {
+                req.session.error = true;
+                req.session.message = 'Ya existe una cuenta con esa Cédula!'
+                return res.render('pages/estudiante/register', {
+                    error: req.session.error,
+                    status: req.session.message
+                });
+            }
+        });
     }
 
     let encryp = await bcrypt.hash(password, 8);
 
     connection.query('SELECT * FROM estudiantes WHERE email = ?', [email], async(error, result) => {
         if (error){
-            console.log(error);
+            res.status(404).render('pages/error', {
+                message: 'Error en la Base De Datos D:',
+                status: 404
+            });
         }else if (result.length > 0) {
             res.render('pages/estudiante/register', {
                 error: false,
