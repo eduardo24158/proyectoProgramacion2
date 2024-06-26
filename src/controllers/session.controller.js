@@ -22,8 +22,13 @@ const postSession = async (req, res) => {
     const password = req.body.password;
 
     if (email && password) {
-        connection.query('SELECT * FROM estudiantes WHERE email = ?', [email], async(error, result)=>{
-            if (result.length == 0 || !(await bcrypt.compare(password, result[0].password))) {
+        connection.query('SELECT * FROM estudiantes WHERE email = ?', [email], async(error, result) => {
+            if(error){
+                res.status(404).render('pages/error', {
+                    message: 'Error en la Base De Datos D:',
+                    status: 404
+                });
+            }else if (result.length == 0 || !(await bcrypt.compare(password, result[0].password))) {
                 res.render('pages/estudiante/inicioDeSesion', {
                     alert: true,
                     alertTitle: 'Error',

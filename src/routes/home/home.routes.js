@@ -1,12 +1,17 @@
 const { Router } = require("express");
-const{geteliminarCuenta,PostEliminarcuenta}=require('../../controllers/cuentaEliminarDelete')
+const{geteliminarCuenta,PostEliminarcuenta} = require('../../controllers/cuentaEliminarDelete');
 const router = Router();
 
 router.get("/estudiante/home", (req, res) => {
   if (req.session.loggedin == true) {
     res.render('pages/estudiante/home', {
-      login: true,
-      name: req.session.name
+        login: true,
+        name: req.session.name
+    });
+  }else if (req.session.Adminloggedin == true) {
+    res.render('pages/administrador/administradorHome', {
+        login: true,
+        AdminName: req.session.adminName
     });
   }else{
     res.redirect('/');

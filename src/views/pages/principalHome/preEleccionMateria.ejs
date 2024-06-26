@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +10,16 @@
   <%- include('../../partials/header.ejs'); %>
     <div class="encabezados Centro">
       <h1 class="tituloUsuario"><%= name %></h1> 
-      <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
-      <a href="/"><button class="btn-3">volver al home</button></a> 
+      <a href="/logout"><button class="btn-3">Cerrar sesión</button></a> 
+      <a href="/"><button class="btn-3">Volver al Home</button></a> 
     </div>
   </header>
     <main class="centro">
       <div class="inicioDePreeleccion " >
-  <h1>Menú de Selección de la preselección</h1>
-  <p>Presiona acá para que empieces a configurar tu horario, accediendo primero a la elección del periodo</p>
-  <a href="/estudiante/preEleccion/periodo"><button class="btn_1">periodo</button></a>
+  <h1>Menú de la PreSelección</h1>
+  <p>Presione acá para que Empiece a configurar su Horario</p>
+  <p>Primero Accederá a la Elección del Periodo</p>
+  <a href="/estudiante/preEleccion/periodo"><button class="btn_1">Periodo</button></a>
       </div>
   </main>
     <%- include('../../partials/footer.ejs'); %>

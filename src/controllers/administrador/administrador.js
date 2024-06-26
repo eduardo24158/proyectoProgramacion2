@@ -1,20 +1,20 @@
-const { connection }= require('../../db');
+const { connection } = require('../../db');
 
 
-const getInicioDeSesion= (req,res)=>{
+const getInicioDeSesion = (req, res) => {
   if (req.session.loggedin == true) {
     res.render('pages/estudiante/home', {
         login: true,
         name: req.session.name
     });
-}else if (req.session.Adminloggedin == true) {
+  }else if (req.session.Adminloggedin == true) {
     res.render('pages/administrador/administradorHome', {
         login: true,
         AdminName: req.session.adminName
     });
-}else{
+  }else{
     res.render('pages/administrador/inicioDeAdmin',)
-}
+  }
 }
 
 const postSession = async (req, res) => {
@@ -24,10 +24,11 @@ const postSession = async (req, res) => {
   if (email && password) {
     connection.query('SELECT * FROM administrador WHERE email = ?', [email], async(error, result)=>{
       if(error) {
-        console.log(error);
-      }
-
-      if (result.length == 0 || password !== result[0].password) { 
+        res.status(404).render('pages/error', {
+          message: 'Error en la Base De Datos D:',
+          status: 404
+        });
+      }else if (result.length == 0 || password !== result[0].password) { 
         res.render('pages/administrador/inicioDeAdmin', {
           alert: true,
           alertTitle: 'Error',
@@ -67,37 +68,53 @@ const postSession = async (req, res) => {
     });
   };
 };
-const getHome= (req,res)=>{
-  req.session.Adminloggedin
-     if (req.session.loggedin == true) {
-      res.render('pages/estudiante/home', {
-          login: true,
-          name: req.session.name
-      });
+const getHome = (req, res) => {
+  if (req.session.loggedin == true) {
+    res.render('pages/estudiante/home', {
+        login: true,
+        name: req.session.name
+    });
   }else if (req.session.Adminloggedin == true) {
-      res.render('pages/administrador/administradorHome', {
-          login: true,
-          AdminName: req.session.adminName
-      });
+    res.render('pages/administrador/administradorHome', {
+        login: true,
+        AdminName: req.session.adminName
+    });
+  }else{
+    res.render('pages/administrador/inicioDeAdmin',);
   }
-  }
+}
 
-const getinfoEstudiante=(req,res)=>{
-  req.session.Adminloggedin
+const getinfoEstudiante = (req, res) => {
+  if (req.session.loggedin == true) {
+    res.render('pages/estudiante/home', {
+        login: true,
+        name: req.session.name
+    });
+  }else if (req.session.Adminloggedin == true) {
     res.render('pages/administrador/inforDeEstudiante',{
       AdminName: req.session.adminName,
-  
-  })
-}
-const postinfoEstudiante=(req,res)=>{
+    })
+  }else{
+    res.render('pages/administrador/inicioDeAdmin',);
+  }
+};
+
+const postinfoEstudiante = (req, res) => {
   const cedula =req.body.cedula;
   req.session.Adminloggedin
   const query='select * from estudiantes where cedula= ?'
-  connection.query(query,[cedula],(error,result)=>{
+  connection.query(query,[cedula], async (error, result) => {
+
     const estudiante= result
     console.log(result)
-      console.log(result.length)
-      if(result.length == 0){
+    console.log(result.length)
+
+    if(error){
+      res.status(404).render('pages/error', {
+        message: 'Error en la Base De Datos D:',
+        status: 404
+      });
+    }else if(result.length == 0){
       res.render('pages/administrador/inforDeEstudiante', {
         AdminName:req.session.adminName,
         error: false,
@@ -108,13 +125,13 @@ const postinfoEstudiante=(req,res)=>{
         showConfirmButtom: false,
         timer: 2000,
         ruta: 'administrador/home/infoEstudiante'
-    });
-      }else{
+      });
+    }else{
       res.render('pages/administrador/estudianteInfor',{
-        AdminName:req.session.adminName,
+        AdminName: req.session.adminName,
         estudiante
       })
-      }
+    }
   })
 }
 

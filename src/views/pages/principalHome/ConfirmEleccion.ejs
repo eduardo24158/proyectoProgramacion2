@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../.././stylesheets/stylesHome.css">
-  <title>confirmacion</title>
+  <title>Resultados</title>
 </head>
 <body>
   <%- include('../../partials/header.ejs'); %>
   <div class="encabezados Centro">
-    <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
-    <a href="/"><button class="btn-3">volver al home</button></a> 
+    <a href="/logout"><button class="btn-3">Cerrar sesión</button></a> 
+    <a href="/"><button class="btn-3">Volver al Home</button></a> 
   </div>
 </header>
   <main class="centroConfimacion ">
     <div class="principalConfirm">
-  <h1 class="tituloConfi">has votado por:</h1>
+  <h1 class="tituloConfi">Has votado por:</h1>
     </div>
     <div class="infoDeConfirm">
     <%for (let i = 0; i < nombre.length; i++) {%>

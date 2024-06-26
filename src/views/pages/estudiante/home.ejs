@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css" />
-    <title>ultimate dace</title>
+    <title>UltimateDace</title>
   </head>
   <body>
     <%- include('../../partials/header.ejs'); %>
     <div class="encabezados Centro">
       <h1 class="tituloUsuario"><%= name %></h1> 
-      <a href="/logout"><button class="btn-3">cerrar sesion</button></a> 
-      <a href="/estudiante/home/eliminarCuenta"><button class="btn-3 Btn-Delete">eliminar cuenta</button></a> 
+      <a href="/logout"><button class="btn-3">Cerrar Sesión</button></a> 
+      <a href="/estudiante/home/eliminarCuenta"><button class="btn-3 Btn-Delete">Eliminar Cuenta</button></a> 
     </div>
     </header>
     <main class="centro">
@@ -22,10 +22,9 @@
           <div class="detalles">
             <h2>Datos personales</h2>
             <p class="pDeCartas">
-              En esta seccion va a poder ver tus datos ingresados al momento de
-              registrarte
+              En esta Sección podrá visualizar sus Datos Personales que proporcionó al momento de Registrarse.
             </p>
-            <div class="buton"><a href="/estudiante/datos"><button class="boton">ingresar</button></a></div>
+            <div class="buton"><a href="/estudiante/datos"><button class="boton">Ingresar</button></a></div>
           </div>
         </div>
       </div>
@@ -35,12 +34,11 @@
       <div class="personaje_2">
         <div class="img-personaje_2">
           <div class="detalles_2">
-            <h2>Pre-Selección de Materias</h2>
+            <h2>PreSelección de Cursos</h2>
             <p>
-              en esta seccion va a poder ver tus datos ingresados al moneto de
-              registrarte
+              En esta Sección podrá acceder a la PreSelección de Cursos, tenga en cuenta que solo puede PreSeleccionar los Cursos correspondientes al Periodo Activo.
             </p>
-            <div class="buton"><a href="/estudiante/preEleccion"><button class="boton">ingresar</button></a></div>
+            <div class="buton"><a href="/estudiante/preEleccion"><button class="boton">Ingresar</button></a></div>
           </div>
         </div>
       </div>
@@ -50,11 +48,11 @@
       <div class="personaje_2">
         <div class="img-personaje_2">
           <div class="detalles_2">
-            <h2>resultados de la pre eleccion</h2>
+            <h2>Resultados de la PreSelección de Cursos</h2>
             <p>
-              aqui puedes ver como van las votaciones de las materias posibles a ver
+              Acá podrá visualizar los Resultados en tiempo real de las Materias más solicitadas del Periodo
             </p>
-            <div class="buton"><a href="/estudiante/preEleccion/preResultado"><button class="boton">ingresar</button></a></div>
+            <div class="buton"><a href="/estudiante/preEleccion/preResultado"><button class="boton">Ingresar</button></a></div>
           </div>
         </div>
       </div>
