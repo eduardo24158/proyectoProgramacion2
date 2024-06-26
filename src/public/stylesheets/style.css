@@ -180,6 +180,9 @@ height: 40px;
   border-radius: 10px;
   color: white;
   margin-top: 25px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .a {
@@ -480,7 +483,6 @@ h2{
 
 .buton{
   height: 200px;
-margin-top: 20px;
 display: flex;
 justify-content: center;
 align-items: center;

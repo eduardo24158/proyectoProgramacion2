@@ -44,7 +44,8 @@ app.use(datosPersonales);
 app.use(DatosAdmin);
 app.use(preEleccion);
 app.use(AdministradorRouter);
-app.use(MateriasOpciones)
+app.use(MateriasOpciones);
+
 
 app.get('/', (req, res) => {
   if (req.session.loggedin == true) {

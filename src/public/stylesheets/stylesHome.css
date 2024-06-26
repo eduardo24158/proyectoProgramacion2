@@ -273,7 +273,6 @@ p{
 
 .buton{
   height: 200px;
-margin-top: 20px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -457,6 +456,7 @@ cursor: pointer;
   align-items: center;
   font-size: 19px;
   box-shadow: 16px 14px 20px #0000008c;
+  text-align: center;
 }
 
 .informacionDeDatos{
@@ -977,6 +977,8 @@ align-items: center;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+  color: white;
 }
 
 
@@ -1060,4 +1062,11 @@ align-items: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/*opciones*/
+.opcionesdatos{
+  width: 700px;
+  height: 700px;
+  flex-direction: column;
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+  <title>Materias Disponibles</title>
+</head>
+<body class="bodyDeSeleccion">
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <h1 class="tituloUsuario"><%= Adminname %></h1> 
+      <a href="/logout"><button class="btn-3">Cerrar sesión</button></a> 
+      <a href="/"><button class="btn-3">Volver al Home</button></a> 
+    </div>
+  </header>
+  <main class="centroResultados">
+    <div class="tituloDatos">
+      <h1>Materias</h1>
+      </div>
+      <div class="resultadosDePreEleccion">
+        <% for (let i = 0; i < Materias.length; i++) { %>
+          <h2 class="materiasEstilos"> <%=Materias[i].materia %> </>
+        <% } %>
+      </div>
+  </main>
+<%- include('../../partials/footer.ejs'); %>
+</body>
+</html>

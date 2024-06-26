@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../.././stylesheets/stylesHome.css">
+  <title>Resultados Previos</title>
+</head>
+<body>
+  <%- include('../../partials/header.ejs'); %>
+    <div class="encabezados Centro">
+      <h1 class="tituloUsuario"><%= AdminName %></h1> 
+      <a href="/logout"><button class="btn-3">Cerrar Sesión</button></a> 
+      <a href="/"><button class="btn-3">Volver al Home</button></a> 
+    </div>
+  </header>
+  <main class="centroPreResultados">
+    <div class="InformacionDelCentro">
+      <h3 class="tituloDePreResultado">Menú de materias</h3>
+      <p>seleccione el semestre donde quiera ver que materias estan disponibles</p>
+    <form action="/administrador/home/MateriasD" method="post" class="formPreResultado">
+      <select name="semestre" class="seleccionDePreResultados">
+        <option selected disabled>Selecciona el Semestre</option>
+        <option value="1">Primer Semestre</option>
+        <option value="2">Segundo Semestre</option>
+        <option value="3">Tercer Semestre</option>
+        <option value="4">Cuarto Semestre</option>
+        <option value="5">Quinto Semestre</option>
+        <option value="6">Sexto Semestre</option>
+        <option value="7">Séptimo Semestre</option>
+        <option value="8">Octavo Semestre</option>
+        <option value="9">Noveno Semestre</option>
+        <option value="10">Décimo Semestre</option>
+      </select>
+    <button class="btn_1" type="submit">Continuar</button>
+    </form>
+    </div>
+  </main>
+  <%- include('../../partials/footer.ejs'); %>
+</body>
+</html>

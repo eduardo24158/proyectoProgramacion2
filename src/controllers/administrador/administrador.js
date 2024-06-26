@@ -136,10 +136,43 @@ const postinfoEstudiante = (req, res) => {
 }
 
 
+const getMateriasD=(req,res)=>{
+  req.session.Adminloggedin
+  res.render('pages/administrador/AdminMateria',{
+    AdminName: req.session.adminName,
+  })
+}
+
+const postMaterias=(req,res)=>{
+  req.session.Adminloggedin
+  const dato = req.body.semestre;
+  const query='SELECT materia FROM materias where semestre_id= ?;';
+  connection.query(query, [dato], async (error, result) => {
+    console.log(result)
+    if(error){
+      res.status(404).render('pages/error', {
+        message: 'Error en la Base De Datos D:',
+        status: 404
+      });
+    }else if(result.length > 0){
+      const Materias = result;
+      console.log(Materias);
+      res.render('pages/administrador/AdminResultados', {
+        Materias,
+        Adminname:req.session.name
+      });
+    }
+  });
+}
+
+
+
 module.exports = {
   getInicioDeSesion,
   postSession,
   getHome,
   getinfoEstudiante,
-  postinfoEstudiante
+  postinfoEstudiante,
+  getMateriasD,
+  postMaterias
 }
