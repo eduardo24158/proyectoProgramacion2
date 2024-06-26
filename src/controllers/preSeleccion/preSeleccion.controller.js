@@ -21,9 +21,7 @@ const getPeriodo = (req, res) => {
       if (error) {
         console.log(error);
       }
-
       if (result.length > 0) {
-        
         res.render('pages/principalHome/yaVoto',{name:req.session.name});
       }else{
         res.render('pages/principalHome/periodoEstu', {
@@ -154,7 +152,7 @@ const postseleccion=(req,res)=>{
 
     datos.forEach(([contenido, value]) => {
         udc -= value;
-
+        
         if(udc >= 12){
           arregloNombre.push(contenido);
         }
@@ -230,7 +228,7 @@ const getPreResultados = (req, res)=>{
 const postPreResultados= (req,res)=>{
   console.log(req.body);
   const dato = req.body.semestre;
-  const query='SELECT materias.Materia,materias.unidadCredito,VotosMateria FROM materias where semestre_id= ?;';
+  const query='SELECT materias.Materia,materias.unidadCredito,materias.VotosMateria FROM materias where semestre_id= ?;';
   connection.query(query, [dato], async (error, result) => {
     console.log(result)
     if(error){
@@ -239,31 +237,14 @@ const postPreResultados= (req,res)=>{
     if(result.length > 0){
       const Materias = result;
       console.log(Materias);
-      res.render('pages/principalHome/resultadosPreEleccion', {Materias,
+      res.render('pages/principalHome/resultadosPreEleccion', {
+        Materias,
         name:req.session.name
       });
     }
   });
 }
 
-const getResultados = (req, res) => {
-  req.session.loggedin
-  const query='SELECT semestre.nombreSemestre, materias.materia, materias.votosMateria FROM materias join semestre on(materias.semestre_id = semestre.id);';
-  connection.query(query, async (error, result) => {
-    console.log(result)
-    if (error) {
-      console.log(error);
-    }
-
-    if (result.length > 0) {
-      console.log(result);
-      res.render('pages/principalHome/resultadosPreEleccion',{
-        arreglo: result,
-        name:req.session.name
-      });
-    }
-  });
-}
 
 module.exports = {
     getPre,
@@ -273,93 +254,6 @@ module.exports = {
     postseleccion,
     getSemestreEleccion,
     postSemestreEleccion,
-    getResultados,
     getPreResultados,
     postPreResultados
 }
-
-/*
-const postseleccion = (req, res) => {
-  const data = req.body;
-  let arregloNombre = [];
-  let udc = 21;
-  const datos = Object.entries(data);
-  req.session.close = false;
-
-  datos.forEach(([contenido, value]) => {
-    udc -= value;
-
-    if (udc > 12) {
-      arregloNombre.push(contenido);
-    }
-  });
-
-  if (udc < 12) {
-    res.render('pages/principalHome/seleccion', {
-      ud: 9,
-      status: true,
-      men: 'Te estás sobrepasando de Unidades de Crédito',
-      arreglo: false,
-      close: false,
-    });
-  } else {
-    // Verificar si ya existe una inscripción
-    const usuario_id = req.session.usuario_id; // Obtén el ID del usuario desde la sesión
-    const promises = arregloNombre.map((materia) => {
-      return new Promise((resolve, reject) => {
-        const query = 'SELECT * FROM inscripciones WHERE usuario_id = ? AND materia = ?';
-        connection.query(query, [usuario_id, materia], (error, result) => {
-          if (error) {
-            console.error('Error al verificar inscripción:', error);
-            reject(error);
-          } else {
-            if (result.length > 0) {
-              // El usuario ya está inscrito en esta materia
-              resolve({ materia, inscrito: true });
-            } else {
-              // El usuario no está inscrito en esta materia
-              resolve({ materia, inscrito: false });
-            }
-          }
-        });
-      });
-    });
-
-    Promise.all(promises)
-      .then((results) => {
-        const materiasInscritas = results.filter((r) => r.inscrito).map((r) => r.materia);
-        if (materiasInscritas.length > 0) {
-          // El usuario ya está inscrito en algunas materias
-          req.session.close = true;
-          res.render('pages/principalHome/ConfirmEleccion', {
-            nombre: materiasInscritas,
-            close: req.session.close,
-          });
-        } else {
-          // Insertar la nueva inscripción
-          const voto = 1;
-          for (let i = 0; i < arregloNombre.length; i++) {
-            const query = 'UPDATE materias SET unidadCredito = unidadCredito + ? WHERE materia = ?';
-            connection.query(query, [voto, arregloNombre[i]], (error, result) => {
-              if (error) {
-                console.error('Error al actualizar el registro:', error);
-              }
-            });
-          }
-          console.log('Se han guardado los datos');
-          req.session.close = true;
-          res.render('pages/principalHome/ConfirmEleccion', {
-            nombre: arregloNombre,
-            close: req.session.close,
-          });
-        }
-      })
-      .catch((error) => {
-        console.error('Error al verificar inscripciones:', error);
-        res.status(500).json({ error: 'Error al procesar la solicitud.' });
-      });
-  }
-};
-
-
-*/

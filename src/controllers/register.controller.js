@@ -83,7 +83,6 @@ const postRegisterStudent = async (req, res) => {
                         if (error) {
                             console.log(error);
                         }else{
-                            console.log(result.insertId)
                             req.session.name = name;
                             req.session.lastname =lastname;
                             req.session.age=age;
