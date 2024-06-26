@@ -78,16 +78,19 @@ const postRegisterStudent = async (req, res) => {
                         ruta: '/estudiante/register'
                     });
                 }else{
-                    connection.query('INSERT INTO estudiantes SET ?', {name:name, lastname:lastname, age:age, email:email, cedula:cedula, password:encryp}, async(error) => {
+                    connection.query('INSERT INTO estudiantes SET ?', {name:name, lastname:lastname, age:age, email:email, cedula:cedula, password:encryp}, async(error,result) => {
+                        console.log(result)
                         if (error) {
                             console.log(error);
                         }else{
+                            console.log(result.insertId)
                             req.session.name = name;
                             req.session.lastname =lastname;
                             req.session.age=age;
                             req.session.email= email;
                             req.session.cedula= cedula;
                             req.session.loggedin = true;
+                            req.session.estudianteID=result.insertId;
                             res.render('pages/estudiante/register', {
                                 error: false,
                                 alert: true,

@@ -14,7 +14,7 @@ const getPre = (req, res) => {
 }
 
 const getPeriodo = (req, res) => {
-  
+  console.log(req.session.estudianteID)
   if (req.session.loggedin == true) {
     connection.query('select p.id, e.id, pe.id, s.id from ProcesoInscripcion p join estudiantes e on(p.estudiante_id = e.id) join periodo pe on(p.periodo_id = pe.id) join semestre s on(p.semestre_id = s.id) where estudiante_id = ?', [req.session.estudianteID],async (error, result) => {
       console.log(result)
@@ -95,6 +95,8 @@ const postSemestreEleccion = (req, res) => {
       // const datos = Object.entries(data);
       req.session.semestre = result[0].semestre_id;
       req.session.materias = result;
+      req.session.loggedin
+      console.log(req.session.estudianteID)
       connection.query('INSERT INTO ProcesoInscripcion(estudiante_id, periodo_id, semestre_id) VALUES(?, ?, ?);', [req.session.estudianteID, req.session.periodoID, req.session.semestre], async (error) => {
         console.log(result)
         if (error) {
@@ -230,6 +232,7 @@ const postPreResultados= (req,res)=>{
   const dato = req.body.semestre;
   const query='SELECT materias.Materia,materias.unidadCredito,VotosMateria FROM materias where semestre_id= ?;';
   connection.query(query, [dato], async (error, result) => {
+    console.log(result)
     if(error){
       console.log(error);
     }
@@ -247,6 +250,7 @@ const getResultados = (req, res) => {
   req.session.loggedin
   const query='SELECT semestre.nombreSemestre, materias.materia, materias.votosMateria FROM materias join semestre on(materias.semestre_id = semestre.id);';
   connection.query(query, async (error, result) => {
+    console.log(result)
     if (error) {
       console.log(error);
     }

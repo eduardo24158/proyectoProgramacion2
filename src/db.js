@@ -3,7 +3,7 @@ const mysql = require('mysql'); //Se indica Promise para que Node tome cada cone
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Alejenial2106.',
+    password: 'password',
     port: 3306,
     database: 'preSeleccionCursos'
 });
@@ -13,7 +13,6 @@ connection.connect((error) => {
         console.log(`El error de conexión es: ${error}`);
         return;
     }
-
     console.log('¡Conectado a la base de datos :D!');
 });
 
