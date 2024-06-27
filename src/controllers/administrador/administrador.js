@@ -161,7 +161,11 @@ const postMaterias=(req,res)=>{
         Materias,
         Adminname:req.session.name
       });
-    }
+    }else(
+      res.render('pages/administrador/sinMaterias',{
+        Name:req.session.name
+      })
+    )
   });
 }
 

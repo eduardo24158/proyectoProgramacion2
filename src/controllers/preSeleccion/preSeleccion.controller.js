@@ -275,38 +275,12 @@ const postPreResultados= (req,res)=>{
         Materias,
         name:req.session.name
       });
-    }
+    }else(
+      res.render('pages/administrador/sinMaterias',{
+        Name:req.session.name
+      })
+    )
   });
-}
-
-const getResultados = (req, res) => {
-  req.session.loggedin
-
-  if (req.session.loggedin == true) {
-    const query='SELECT semestre.nombreSemestre, materias.materia, materias.votosMateria FROM materias join semestre on(materias.semestre_id = semestre.id);';
-    connection.query(query, async (error, result) => {
-      console.log(result)
-      if (error) {
-        res.status(404).render('pages/error', {
-          message: 'Error en la Base De Datos D:',
-          status: 404
-        });
-      }else if (result.length > 0) {
-        console.log(result);
-        res.render('pages/principalHome/resultadosPreEleccion',{
-          arreglo: result,
-          name:req.session.name
-        });
-      }
-    });
-  }else if (req.session.Adminloggedin == true) {
-    res.render('pages/administrador/administradorHome', {
-        login: true,
-        AdminName: req.session.adminName
-    });
-  }else{
-    res.redirect('/');
-  }
 }
 
 module.exports = {

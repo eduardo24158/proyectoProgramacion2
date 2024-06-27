@@ -21,7 +21,6 @@ create table materias(
     materia varchar(100) not null,
     codigoMateria varchar(10) not null,
     votosMateria int default 0 not null,
-    carrera_id int not null,
     semestre_id int not null,
     primary key(id)
 );
@@ -30,6 +29,7 @@ create table ProcesoInscripcion(
 	id int auto_increment not null,
     estudiante_id int not null,
     periodo_id int not null,
+    semestre_id int not null,
     primary key(id)
 );
 
@@ -38,7 +38,6 @@ create table asig_inscritos(
 	id int auto_increment not null,
     proceso_id int not null,
     materias_id int not null,
-    estudiante_id int not null,
     primary key(id)
 );
 

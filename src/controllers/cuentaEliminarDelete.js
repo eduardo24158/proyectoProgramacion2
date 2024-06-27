@@ -22,7 +22,7 @@ const PostEliminarcuenta = (req, res) => {
         message: 'Error en la Base De Datos D:',
         status: 404
       });
-    }else{
+    }else if(result.length>0){
       res.render('pages/estudiante/eliminarCuenta', {
         alert: true,
         alertTitle: 'cumplido!',
@@ -32,8 +32,17 @@ const PostEliminarcuenta = (req, res) => {
         timer: 2000,
         ruta: ''
       });
-    }
+    }else{    res.render('pages/estudiante/eliminarCuenta', {
+      alert: true,
+      alertTitle: 'Error',
+      alertMessage: "ingreso mal el correo vuelva a intentarlo",
+      alertIcon: "error",
+      showConfirmButtom: true,
+      timer: 20000,
+      ruta: 'estudiante/home/eliminarCuenta'
+  });}
   })
+
 }
 
 module.exports = {

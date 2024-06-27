@@ -584,11 +584,13 @@ color: white;
   flex-direction: column;
   flex: 1;
   margin-bottom:60px ;
+  text-align: center;
 }
 
 .SubtituloSeleccion{
   color: rgb(221, 216, 216);
   font-size: 20px;
+  text-align: center;
 }
 
 .NombreMaterias{
