@@ -11,4 +11,5 @@ router.get('/administrador/Materia/eliminar',getMateriaEliminar)
 router.post('/administrador/Materia/eliminar',postMateriaEliminar)
 
 
+
 module.exports = router;

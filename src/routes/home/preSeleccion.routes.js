@@ -20,4 +20,5 @@ router.get('/estudiante/preEleccion/preResultado',getPreResultados);
 router.post('/estudiante/preEleccion/preResultado',postPreResultados);
 
 
+
 module.exports = router;

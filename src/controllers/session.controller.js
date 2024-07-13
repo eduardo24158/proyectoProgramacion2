@@ -17,6 +17,7 @@ const getSession = (req, res) => {
     }
 };
 
+
 const postSession = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;

@@ -18,6 +18,8 @@ router.get('/', (req, res) => {
 });
 
 
+
+
 router.get('/TerminosCondiciones', (req, res) => {
   res.render('pages/terminos');
 });

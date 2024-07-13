@@ -15,6 +15,7 @@ const getAdminOpciones = (req, res) => {
   }
 }
 
+
 const getMateriaIngresar = (req, res) => {
   if (req.session.loggedin == true) {
     res.render('pages/estudiante/home', {

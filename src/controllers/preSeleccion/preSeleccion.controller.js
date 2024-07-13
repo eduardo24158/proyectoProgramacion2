@@ -15,6 +15,7 @@ const getPre = (req, res) => {
   }
 }
 
+
 const getPeriodo = (req, res) => {
   console.log(req.session.estudianteID)
   if (req.session.loggedin == true) {

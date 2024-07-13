@@ -22,4 +22,5 @@ router.get('/estudiante/datos', (req, res) => {
   }
 });
 
+
 module.exports = router;

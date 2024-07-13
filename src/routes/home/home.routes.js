@@ -25,6 +25,7 @@ router.get("/logout", (req, res) => {
 });
 
 
+
 router.get('/estudiante/home/eliminarCuenta',geteliminarCuenta);
 router.post('/estudiante/home/eliminarCuenta',PostEliminarcuenta)
 

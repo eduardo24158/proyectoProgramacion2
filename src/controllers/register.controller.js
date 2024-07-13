@@ -19,6 +19,7 @@ const getRegister = (req, res) => {
     }
 };
 
+
 const postRegisterStudent = async (req, res) => {
     const name = req.body.name;
     const lastname = req.body.lastname;

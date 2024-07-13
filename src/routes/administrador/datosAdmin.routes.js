@@ -22,4 +22,5 @@ router.get('/administrador/datos', (req, res) => {
   }
 });
 
+
 module.exports = router;

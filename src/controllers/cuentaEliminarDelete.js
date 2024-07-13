@@ -11,6 +11,7 @@ const geteliminarCuenta = (req, res) => {
 }
 }
 
+
 const PostEliminarcuenta = (req, res) => {
   console.log(req.body)
   const correo= req.body.email;
